@@ -8,6 +8,9 @@ public class ClothingSlotUI : MonoBehaviour
     private ItemUI currentItem;
     public ItemUI GetCurrentItem() => currentItem;
 
+    public RectTransform uiItemRoot;
+    public ItemUI itemPrefab;
+
     public bool CanAccept(ItemUI item)
     {
         return item.GetItemData().itemType == acceptedItemType;
@@ -22,6 +25,16 @@ public class ClothingSlotUI : MonoBehaviour
 
         currentItem = newItem;
         newItem.EquipTo(clothingLayer, this);
+    }
+
+    public void EquipFromData(ItemData newItemData)
+    {
+        currentItem = null;
+        ItemUI item = Instantiate(itemPrefab, uiItemRoot);
+        item.SetItemData(newItemData);
+
+        currentItem = item;
+        item.EquipTo(clothingLayer, this);
     }
 
 
