@@ -1,27 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Level Data")]
 public class LevelData : ScriptableObject
 {
+    public string levelId;
+    public GameObject levelPrefab;
     public List<ItemScoreEntry> itemScores = new();
 
-    public int GetScoreForItem(ItemData item)
-    {
-        foreach (var entry in itemScores)
-        {
-            if (entry.item == item)
-                return entry.scoreValue;
-        }
+    public float GetConformityForItem(ItemData item) =>
+        itemScores.FirstOrDefault(entry => entry.item.itemId == item.itemId)?.conformity ?? 0;
 
-        return 0;
-    }
+    public float GetCreativityForItem(ItemData item) =>
+        itemScores.FirstOrDefault(entry => entry.item.itemId == item.itemId)?.creativity ?? 0;
 
     [Serializable]
     public class ItemScoreEntry
     {
         public ItemData item;
-        public int scoreValue;
+        [Range(0, 1)] public float conformity;
+        [Range(0, 1)] public float creativity;
     }
 }
