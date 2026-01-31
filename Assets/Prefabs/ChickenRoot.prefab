@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 5501296352003940050}
   - component: {fileID: 8185948367719763977}
   - component: {fileID: 6291506175967367677}
+  - component: {fileID: 4468855968546795697}
   m_Layer: 5
   m_Name: ChickenRoot
   m_TagString: Untagged
@@ -880,6 +881,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4468855968546795697
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761787173688977103}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9401dd40520be44cb88d7364ed11a57e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6464913879823229958
 GameObject:
   m_ObjectHideFlags: 0
