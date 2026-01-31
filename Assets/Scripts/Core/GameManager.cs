@@ -10,9 +10,14 @@ public class GameManager : MonoBehaviour
 
     public LevelData[] levels;
     public ItemUI itemPrefab;
-    public List<RectTransform> itemSpawnSlots;
 
+    public RectTransform uiItemRoot;
+    public List<RectTransform> itemSpawnSlots;
+    public PipaUI pipa;
+
+    private ClothingSlotUI[] clothingSlots;
     private LevelData currentLevelData;
+
     private Dictionary<string, ItemUI> spawnedItems = new();
 
     private void Awake()
@@ -25,17 +30,22 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
 
+    private void Start()
+    {
         InitializeGame();
     }
 
     private void InitializeGame()
     {
+        clothingSlots = pipa.clothingSlots;
+
         if (SaveSystem.HasSave())
         {
             SaveSystem.SaveData data = SaveSystem.LoadGame();
             currentLevelIndex = data.currentLevelIndex;
-            Debug.LogError("CONTINUE GAME - Level Index: " + currentLevelIndex);
+            Debug.Log($"CONTINUE GAME - Level {currentLevelIndex}");
         }
         else
         {
@@ -55,13 +65,10 @@ public class GameManager : MonoBehaviour
 
     private void SpawnItems()
     {
-        if (currentLevelData == null)
-            return;
+        ClearExistingItems();
 
         if (SaveSystem.HasSave())
-        {
             SpawnFromSave();
-        }
         else
         {
             SpawnRandom();
@@ -74,22 +81,26 @@ public class GameManager : MonoBehaviour
         List<RectTransform> shuffledSlots = new(itemSpawnSlots);
         Shuffle(shuffledSlots);
 
-        int slotIndex = 0;
+        int slotCursor = 0;
 
         foreach (var entry in currentLevelData.itemScores)
         {
-            RectTransform slot = shuffledSlots[slotIndex];
+            RectTransform spawnSlot = shuffledSlots[slotCursor];
 
-            ItemUI item = Instantiate(itemPrefab, slot);
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            ItemUI item = Instantiate(itemPrefab, uiItemRoot);
             item.SetItemData(entry.item);
 
-            spawnedItems.Add(entry.item.itemId, item);
+            int originalIndex = itemSpawnSlots.IndexOf(spawnSlot);
+            item.SetOriginalSpawnSlot(originalIndex);
 
-            slotIndex++;
+            item.transform.SetParent(spawnSlot, false);
+            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+            spawnedItems.Add(entry.item.itemId, item);
+            slotCursor++;
         }
     }
-    
+
     private void SpawnFromSave()
     {
         SaveSystem.SaveData saveData = SaveSystem.LoadGame();
@@ -102,39 +113,84 @@ public class GameManager : MonoBehaviour
             if (itemData == null)
                 continue;
 
-            RectTransform slot = itemSpawnSlots[spawn.slotIndex];
+            RectTransform spawnSlot = itemSpawnSlots[spawn.slotIndex];
 
-            ItemUI item = Instantiate(itemPrefab, slot);
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            ItemUI item = Instantiate(itemPrefab, uiItemRoot);
             item.SetItemData(itemData);
+            item.SetOriginalSpawnSlot(spawn.slotIndex);
+
+            item.transform.SetParent(spawnSlot, false);
+            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
             spawnedItems.Add(itemData.itemId, item);
         }
+
+        foreach (var slot in clothingSlots)
+        {
+            slot.ClearSlot();
+        }
+
+        foreach (var placement in saveData.itemPlacements)
+        {
+            if (!spawnedItems.TryGetValue(placement.itemId, out ItemUI item))
+                continue;
+
+            if (placement.clothingSlotIndex < 0 ||
+                placement.clothingSlotIndex >= clothingSlots.Length)
+                continue;
+
+            clothingSlots[placement.clothingSlotIndex].Equip(item);
+        }
     }
 
-
-    private void SaveProgress()
+    private void ClearExistingItems()
     {
-        SaveSystem.SaveData data = new SaveSystem.SaveData();
-        data.currentLevelIndex = currentLevelIndex;
-
-        for (int i = 0; i < itemSpawnSlots.Count; i++)
+        foreach (var item in spawnedItems.Values)
         {
-            foreach (Transform child in itemSpawnSlots[i])
-            {
-                ItemUI item = child.GetComponent<ItemUI>();
-                if (item == null)
-                    continue;
+            if (item != null)
+                Destroy(item.gameObject);
+        }
 
-                data.itemSpawns.Add(new SaveSystem.ItemSpawnData
-                {
-                    itemId = item.getItemId(),
-                    slotIndex = i
-                });
-            }
+        spawnedItems.Clear();
+    }
+
+    public void SaveProgress()
+    {
+        SaveSystem.SaveData data = new SaveSystem.SaveData
+        {
+            currentLevelIndex = currentLevelIndex
+        };
+
+        foreach (var pair in spawnedItems)
+        {
+            ItemUI item = pair.Value;
+
+            data.itemSpawns.Add(new SaveSystem.ItemSpawnData
+            {
+                itemId = item.GetItemData().itemId,
+                slotIndex = item.GetOriginalSpawnSlot()
+            });
+        }
+
+        for (int i = 0; i < clothingSlots.Length; i++)
+        {
+            ItemUI equippedItem = clothingSlots[i].GetCurrentItem();
+            if (equippedItem == null)
+                continue;
+
+            data.itemPlacements.Add(new SaveSystem.ItemPlacementData
+            {
+                itemId = equippedItem.GetItemData().itemId,
+                clothingSlotIndex = i
+            });
         }
 
         SaveSystem.SaveGame(data);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveProgress();
     }
 
     private void Shuffle<T>(List<T> list)
@@ -154,9 +210,8 @@ public class GameManager : MonoBehaviour
             {
                 if (entry.item.itemId == id)
                     return entry.item;
-            }  
+            }
         }
         return null;
     }
-
 }

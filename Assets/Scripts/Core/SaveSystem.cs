@@ -29,7 +29,8 @@ public static class SaveSystem
 
     public static void ClearSave()
     {
-        PlayerPrefs.DeleteKey(SAVE_KEY);
+        PlayerPrefs.DeleteAll();
+
     }
 
     [Serializable]
@@ -37,6 +38,7 @@ public static class SaveSystem
     {
         public int currentLevelIndex;
         public List<ItemSpawnData> itemSpawns = new();
+        public List<ItemPlacementData> itemPlacements = new();
     }
 
     [Serializable]
@@ -44,5 +46,12 @@ public static class SaveSystem
     {
         public string itemId;
         public int slotIndex;
+    }
+
+    [Serializable]
+    public class ItemPlacementData
+    {
+        public string itemId;
+        public int clothingSlotIndex;
     }
 }

@@ -10,10 +10,13 @@ public class ItemUI : MonoBehaviour,
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Image image;
-    private string itemId;
 
-    private Transform originalParent;
-    private Vector2 originalPosition;
+    private ItemData itemData;
+    private ClothingSlotUI currentSlot;
+
+    private int originalSpawnSlotIndex = -1;
+
+    private Vector2 pointerOffset;
 
     private bool wasDroppedOnFigure;
 
@@ -23,28 +26,51 @@ public class ItemUI : MonoBehaviour,
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GetComponentInParent<Canvas>();
         image = GetComponent<Image>();
-
-        originalParent = transform.parent;
-        originalPosition = rectTransform.anchoredPosition;
     }
 
-    public void SetItemData(ItemData data){
+    public void SetItemData(ItemData data)
+    {
+        itemData = data;
         image.sprite = data.icon;
-        itemId = data.itemId;
     }
+
+    public ItemData GetItemData() => itemData;
+
+    public void SetOriginalSpawnSlot(int slotIndex)
+    {
+        originalSpawnSlotIndex = slotIndex;
+    }
+
+    public int GetOriginalSpawnSlot() => originalSpawnSlotIndex;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (canvas == null)
+            canvas = GetComponentInParent<Canvas>();
+
         canvasGroup.blocksRaycasts = false;
         wasDroppedOnFigure = false;
 
-        // Move to top-level canvas so it follows cursor cleanly
-        transform.SetParent(canvas.transform);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out pointerOffset
+        );
+
+        transform.SetParent(canvas.transform, true);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvas.transform as RectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out Vector2 localPoint
+        );
+
+        rectTransform.localPosition = localPoint - pointerOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -57,20 +83,29 @@ public class ItemUI : MonoBehaviour,
         }
     }
 
-    public void EquipTo(Transform target)
+    public void EquipTo(RectTransform target, ClothingSlotUI slot)
     {
         wasDroppedOnFigure = true;
-        transform.SetParent(target);
+        currentSlot = slot;
+
+        transform.SetParent(target, false);
         rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.localScale = Vector3.one;
     }
 
     public void ReturnToOriginal()
     {
-        transform.SetParent(originalParent);
-        rectTransform.anchoredPosition = originalPosition;
-    }
+        if (currentSlot != null)
+        {
+            currentSlot.ClearSlot();
+            currentSlot = null;
+        }
 
-    public string getItemId(){
-        return itemId;
+        RectTransform spawnSlot =
+            GameManager.instance.itemSpawnSlots[originalSpawnSlotIndex];
+
+        transform.SetParent(spawnSlot, false);
+        rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.localScale = Vector3.one;
     }
 }
