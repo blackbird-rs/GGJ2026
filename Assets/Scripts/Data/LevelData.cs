@@ -20,7 +20,7 @@ public class LevelData : ScriptableObject
     public class ItemScoreEntry
     {
         public ItemData item;
-        [Range(0, 1)] public float conformity;
+        [Range(-1, 1)] public float conformity;
         [Range(0, 1)] public float creativity;
     }
 }
