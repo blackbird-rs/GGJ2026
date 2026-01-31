@@ -3,9 +3,7 @@ using UnityEngine.EventSystems;
 
 public class PipaUI : MonoBehaviour, IDropHandler
 {
-    public RectTransform clothingLayer;
-
-    private ItemUI currentItem;
+    public ClothingSlotUI[] clothingSlots;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -13,12 +11,16 @@ public class PipaUI : MonoBehaviour, IDropHandler
         if (newItem == null)
             return;
 
-        if (currentItem != null)
+        foreach (var slot in clothingSlots)
         {
-            currentItem.ReturnToOriginal();
+            if (slot.CanAccept(newItem))
+            {
+                slot.Equip(newItem);
+                return;
+            }
         }
 
-        currentItem = newItem;
-        newItem.EquipTo(clothingLayer);
+        newItem.ReturnToOriginal();
     }
+
 }
