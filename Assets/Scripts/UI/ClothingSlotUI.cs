@@ -42,4 +42,9 @@ public class ClothingSlotUI : MonoBehaviour
     {
         currentItem = null;
     }
+
+    public bool TryEquip(ItemData newItem)
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Level Data")]
 public class LevelData : ScriptableObject
 {
-    public string levelId;
+    public int levelIndex;
+    public string levelHint;
     public GameObject levelPrefab;
     public List<ItemScoreEntry> itemScores = new();
 
