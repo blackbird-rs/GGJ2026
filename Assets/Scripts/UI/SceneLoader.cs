@@ -6,6 +6,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadSceneByIndex(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+        JudgyAudioManager.Instance.Steps();
     }
 
     public void LoadSceneByName(string sceneName)
