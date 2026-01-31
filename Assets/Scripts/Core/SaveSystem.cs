@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public static class SaveSystem
 {
@@ -39,6 +40,15 @@ public static class SaveSystem
         public int currentLevelIndex;
         public List<ItemSpawnData> itemSpawns = new();
         public List<ItemPlacementData> itemPlacements = new();
+        public Dictionary<int, float> levelScores = new();
+
+        [FormerlySerializedAs("previousItems")] public List<ItemData> oldItems = new();
+        public List<ItemData> olderItems = new();
+
+        public void AddScore(int levelIndex, float score)
+        {
+            levelScores[levelIndex] = score;
+        }
     }
 
     [Serializable]

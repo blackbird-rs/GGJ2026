@@ -9,7 +9,7 @@ public class LocationLevelManager : MonoBehaviour
     public List<LevelData> levelsData;
     public Transform locationHolder;
     public PipaUI pipaUI;
-    // public JudgesUI judgesUI;
+    public JudgesUI judgesUI;
     public SceneLoader sceneLoader;
 
     private void Start()
@@ -30,12 +30,12 @@ public class LocationLevelManager : MonoBehaviour
         locationHolder.ClearChildren();
         Instantiate(currentLevelData.levelPrefab, locationHolder);
         pipaUI.gameObject.SetActive(false);
-        // judgesUI.gameObject.SetActive(false);
+        judgesUI.gameObject.SetActive(false);
 
-        StartCoroutine(LocationFlow(saveData, currentLevelData, equippedItems));
+        StartCoroutine(LocationFlow(currentLevelData, equippedItems));
     }
 
-    private IEnumerator LocationFlow(SaveSystem.SaveData saveData, LevelData currentLevelData, IEnumerable<ItemData> equippedItems)
+    private IEnumerator LocationFlow(LevelData currentLevelData, IEnumerable<ItemData> equippedItems)
     {
         yield return new WaitForSeconds(1f);
 
@@ -43,12 +43,15 @@ public class LocationLevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // judgesUI.StartLevel(currentLevelData, equippedItems);
+        var averageScore = judgesUI.StartLevel(currentLevelData, equippedItems);
 
         yield return new WaitForSeconds(5f);
 
+        var saveData = SaveSystem.LoadGame();
+        saveData.levelScores[saveData.currentLevelIndex] = averageScore;
         saveData.currentLevelIndex += 1;
         SaveSystem.SaveGame(saveData);
+
         sceneLoader.LoadSceneByIndex(1);
     }
 }

@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEngine;
+
+public class JudgesUI: MonoBehaviour
+{
+    public List<Judge> judges;
+    public TMP_Text averageScoreText;
+
+    public float StartLevel(LevelData currentLevelData, IEnumerable<ItemData> equippedItems)
+    {
+        foreach (var judge in judges)
+        {
+            judge.gameObject.SetActive(false);
+        }
+        averageScoreText.gameObject.SetActive(false);
+
+        gameObject.SetActive(true);
+
+        var scores = judges.Select(x => x.GetScore(currentLevelData, equippedItems)).ToList();
+        var averageScore = (float)scores.Sum() / scores.Count;
+        StartCoroutine(JudgesFlow(scores, averageScore));
+        return averageScore;
+    }
+
+    private IEnumerator JudgesFlow(List<int> scores, float averageScore)
+    {
+        judges[0].StartLevel(scores[0]);
+
+        yield return new WaitForSeconds(0.5f);
+
+        judges[1].StartLevel(scores[1]);
+
+        yield return new WaitForSeconds(0.5f);
+
+        judges[2].StartLevel(scores[2]);
+
+        yield return new WaitForSeconds(0.5f);
+
+        averageScoreText.gameObject.SetActive(true);
+        averageScoreText.text = $"{averageScore:0.0}";
+    }
+}

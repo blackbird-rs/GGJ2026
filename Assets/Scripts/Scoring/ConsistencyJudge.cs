@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class ConsistencyJudge : Judge
 {
-    private IEnumerable<ItemData> previousItems = new List<ItemData>();
-    private IEnumerable<ItemData> olderItems = new List<ItemData>();
-
     protected override float GetNormalizedScore(LevelData levelData, IEnumerable<ItemData> items)
     {
+        var saveData = SaveSystem.LoadGame();
         float totalScore = 0; // 3-6
         float bonusMultiplier = 1; // 1-1.5
         foreach (var item in items)
         {
-            if (previousItems.Contains(item) && olderItems.Contains(item))
+            if (saveData.oldItems.Contains(item) && saveData.olderItems.Contains(item))
             {
                 totalScore += 2;
                 bonusMultiplier = Mathf.Min(bonusMultiplier, 1.5f);
             }
-            else if (previousItems.Contains(item) || olderItems.Contains(item))
+            else if (saveData.oldItems.Contains(item) || saveData.olderItems.Contains(item))
             {
                 totalScore += 1.5f;
                 bonusMultiplier = Mathf.Min(bonusMultiplier, 1.25f);
@@ -29,8 +27,9 @@ public class ConsistencyJudge : Judge
             }
         }
 
-        olderItems = previousItems;
-        previousItems = items;
+        saveData.olderItems = saveData.oldItems;
+        saveData.oldItems = items.ToList();
+        SaveSystem.SaveGame(saveData);
 
         return totalScore * bonusMultiplier / 6; // 0.5-1.5
     }

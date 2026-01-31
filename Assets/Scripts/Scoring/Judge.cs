@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public abstract class Judge
+public abstract class Judge : MonoBehaviour
 {
+    public TMP_Text scoreText;
+
     public int GetScore(LevelData levelData, IEnumerable<ItemData> items)
     {
         float normalizedScore = GetNormalizedScore(levelData, items);
@@ -11,4 +14,10 @@ public abstract class Judge
     }
 
     protected abstract float GetNormalizedScore(LevelData levelData, IEnumerable<ItemData> items);
+
+    public void StartLevel(int score)
+    {
+        gameObject.SetActive(true);
+        scoreText.text = score.ToString();
+    }
 }
