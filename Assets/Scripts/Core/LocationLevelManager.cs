@@ -25,7 +25,7 @@ public class LocationLevelManager : MonoBehaviour
         var currentLevelData = levelsData.Find(x => x.levelIndex == levelIndex);
 
         var itemPlacements = saveData.itemPlacements;
-        var equippedItems = itemPlacements.Select(x => GameManager.instance.FindItemDataById(x.itemId));
+        var equippedItems = itemPlacements.Select(x => GameManager.Instance.FindItemDataById(x.itemId));
 
         locationHolder.ClearChildren();
         Instantiate(currentLevelData.levelPrefab, locationHolder);

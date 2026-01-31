@@ -34,7 +34,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
 
     private static T GetOrCreateInstance()
     {
-        var instances = FindObjectsOfType<T>();
+        var instances = FindObjectsByType<T>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         if (instances.Length == 0)
         {
             return null;

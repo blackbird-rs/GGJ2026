@@ -27,6 +27,8 @@ public class JudgesUI: MonoBehaviour
 
     private IEnumerator JudgesFlow(List<int> scores, float averageScore)
     {
+        yield return new WaitForSeconds(0.5f);
+
         judges[0].StartLevel(scores[0]);
 
         yield return new WaitForSeconds(0.5f);

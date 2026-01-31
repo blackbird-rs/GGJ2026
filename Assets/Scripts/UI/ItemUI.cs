@@ -102,7 +102,7 @@ public class ItemUI : MonoBehaviour,
         }
 
         RectTransform spawnSlot =
-            GameManager.instance.itemSpawnSlots[originalSpawnSlotIndex];
+            GameManager.Instance.itemSpawnSlots[originalSpawnSlotIndex];
 
         transform.SetParent(spawnSlot, false);
         rectTransform.anchoredPosition = Vector2.zero;

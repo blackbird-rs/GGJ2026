@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoSingleton<GameManager>
 {
-    public static GameManager instance;
-
     public int totalScore;
 
     public ItemData[] items;
@@ -17,18 +15,6 @@ public class GameManager : MonoBehaviour
     private ClothingSlotUI[] clothingSlots;
 
     private Dictionary<string, ItemUI> spawnedItems = new();
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Start()
     {
