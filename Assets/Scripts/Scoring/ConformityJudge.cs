@@ -16,6 +16,6 @@ public class ConformityJudge : Judge
             }
         }
 
-        return totalScore * bonusMultiplier / 6;
+        return totalScore * bonusMultiplier / 6; // 0.0-1.0
     }
 }

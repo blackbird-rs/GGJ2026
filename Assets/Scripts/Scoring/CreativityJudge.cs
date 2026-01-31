@@ -20,6 +20,6 @@ public class CreativityJudge : Judge
             };
         }
 
-        return totalScore * bonusMultiplier / 12;
+        return totalScore * bonusMultiplier / 10; // 0.3-1.2
     }
 }
