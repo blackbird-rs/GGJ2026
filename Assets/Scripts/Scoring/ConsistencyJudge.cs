@@ -11,12 +11,12 @@ public class ConsistencyJudge : Judge
         float bonusMultiplier = 1; // 1-1.5
         foreach (var item in items)
         {
-            if (saveData.oldItems.Contains(item) && saveData.olderItems.Contains(item))
+            if (saveData.oldItems.Contains(item.itemId) && saveData.olderItems.Contains(item.itemId))
             {
                 totalScore += 2;
                 bonusMultiplier = Mathf.Min(bonusMultiplier, 1.5f);
             }
-            else if (saveData.oldItems.Contains(item) || saveData.olderItems.Contains(item))
+            else if (saveData.oldItems.Contains(item.itemId) || saveData.olderItems.Contains(item.itemId))
             {
                 totalScore += 1.5f;
                 bonusMultiplier = Mathf.Min(bonusMultiplier, 1.25f);
@@ -28,7 +28,7 @@ public class ConsistencyJudge : Judge
         }
 
         saveData.olderItems = saveData.oldItems;
-        saveData.oldItems = items.ToList();
+        saveData.oldItems = items.Select(x => x.itemId).ToList();
         SaveSystem.SaveGame(saveData);
 
         return totalScore * bonusMultiplier / 6; // 0.5-1.5

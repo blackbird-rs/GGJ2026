@@ -42,8 +42,8 @@ public static class SaveSystem
         public List<ItemPlacementData> itemPlacements = new();
         public Dictionary<int, float> levelScores = new();
 
-        [FormerlySerializedAs("previousItems")] public List<ItemData> oldItems = new();
-        public List<ItemData> olderItems = new();
+        public List<string> oldItems = new();
+        public List<string> olderItems = new();
 
         public void AddScore(int levelIndex, float score)
         {
