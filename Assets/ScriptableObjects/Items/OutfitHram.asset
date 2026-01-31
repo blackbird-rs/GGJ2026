@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4acc6a83be6f5842a98c3fda89bdb50, type: 3}
-  m_Name: Outfit
+  m_Name: OutfitHram
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: outfit_0
   itemType: 1

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4acc6a83be6f5842a98c3fda89bdb50, type: 3}
-  m_Name: Shoes 2
+  m_Name: HatMall
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: shoes_2
-  itemType: 2
-  icon: {fileID: 21300000, guid: c02f7e9d3e3ce14459092a426b629831, type: 3}
+  itemId: hat_4
+  itemType: 0
+  icon: {fileID: 21300000, guid: 6d3ddf4e03fed5a4290f805df101609c, type: 3}
   clothingItem: {fileID: 0}
-  additionalItem: {fileID: 21300000, guid: c02f7e9d3e3ce14459092a426b629831, type: 3}
+  additionalItem: {fileID: 0}

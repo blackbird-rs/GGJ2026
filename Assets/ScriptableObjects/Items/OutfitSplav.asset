@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4acc6a83be6f5842a98c3fda89bdb50, type: 3}
-  m_Name: Outfit 5
+  m_Name: OutfitSplav
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: outfit_5
+  itemId: outfit_1
   itemType: 1
-  icon: {fileID: 21300000, guid: 95a2854b549e3544bbe7565795ee8d51, type: 3}
+  icon: {fileID: 21300000, guid: c78b0ee55b91bd59dae4d0dd289934cc, type: 3}
   clothingItem: {fileID: 0}
-  additionalItem: {fileID: 4832136516291768376, guid: 2d82d99ea3558f34b93fd9bd791f1a83, type: 3}
+  additionalItem: {fileID: -6165233103217253803, guid: 90a0e38377522574e954438cd5a2a845, type: 3}

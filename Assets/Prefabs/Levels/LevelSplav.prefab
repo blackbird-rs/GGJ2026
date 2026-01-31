@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1701112209230897366, guid: fa535b2a8d8594da59b07f413d4bef75, type: 3}
+  m_Sprite: {fileID: 7863491904328469894, guid: 084326982f4234a70addb100165dc640, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9200159377233464008}
   m_Layer: 5
-  m_Name: Level1
+  m_Name: LevelSplav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

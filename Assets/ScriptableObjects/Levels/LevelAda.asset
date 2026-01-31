@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cfd23e25544fe4da7a8ac0f367bdda, type: 3}
+  m_Name: LevelAda
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelIndex: 2
+  levelHint: 
+  levelPrefab: {fileID: 7184479099893075796, guid: 270b5119504e64f34807a18cf1c09e24, type: 3}
+  itemScores: []

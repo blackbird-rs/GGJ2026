@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4acc6a83be6f5842a98c3fda89bdb50, type: 3}
-  m_Name: Hat 3
+  m_Name: HatHram
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: hat_3
+  itemId: hat_0
   itemType: 0
-  icon: {fileID: 21300000, guid: 736b1696e6cc82841abea96f22a40351, type: 3}
-  clothingItem: {fileID: 0}
-  additionalItem: {fileID: 0}
+  icon: {fileID: 21300000, guid: a00153339ef39acabaf8a1325c67c13c, type: 3}
