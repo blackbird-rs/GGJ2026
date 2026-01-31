@@ -15,9 +15,13 @@ public abstract class Judge : MonoBehaviour
 
     protected abstract float GetNormalizedScore(LevelData levelData, IEnumerable<ItemData> items);
 
+    public void ClearText()
+    {
+        scoreText.text = "";
+    }
+
     public void StartLevel(int score)
     {
-        gameObject.SetActive(true);
         scoreText.text = score.ToString();
     }
 }

@@ -13,9 +13,9 @@ public class JudgesUI: MonoBehaviour
     {
         foreach (var judge in judges)
         {
-            judge.gameObject.SetActive(false);
+            judge.ClearText();
         }
-        averageScoreText.gameObject.SetActive(false);
+        averageScoreText.text = "";
 
         gameObject.SetActive(true);
 
@@ -39,7 +39,6 @@ public class JudgesUI: MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        averageScoreText.gameObject.SetActive(true);
         averageScoreText.text = $"{averageScore:0.0}";
     }
 }
