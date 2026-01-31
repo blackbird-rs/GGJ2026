@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4acc6a83be6f5842a98c3fda89bdb50, type: 3}
   m_Name: Hat
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: item_0
+  itemId: hat_0
   itemType: 0
   icon: {fileID: -768459404857128396, guid: f5bc66ca7d0b387419865925063d8b65, type: 3}

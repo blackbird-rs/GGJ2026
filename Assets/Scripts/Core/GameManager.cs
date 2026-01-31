@@ -5,10 +5,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int currentLevelIndex;
     public int totalScore;
 
-    public LevelData[] levels;
+    public ItemData[] items;
     public ItemUI itemPrefab;
 
     public RectTransform uiItemRoot;
@@ -16,7 +15,6 @@ public class GameManager : MonoBehaviour
     public PipaUI pipa;
 
     private ClothingSlotUI[] clothingSlots;
-    private LevelData currentLevelData;
 
     private Dictionary<string, ItemUI> spawnedItems = new();
 
@@ -44,22 +42,13 @@ public class GameManager : MonoBehaviour
         if (SaveSystem.HasSave())
         {
             SaveSystem.SaveData data = SaveSystem.LoadGame();
-            currentLevelIndex = data.currentLevelIndex;
-            Debug.Log($"CONTINUE GAME - Level {currentLevelIndex}");
         }
         else
         {
-            currentLevelIndex = 0;
             Debug.Log("NEW GAME");
         }
 
         totalScore = 0;
-        LoadLevel(currentLevelIndex);
-    }
-
-    private void LoadLevel(int levelIndex)
-    {
-        currentLevelData = levels[levelIndex];
         SpawnItems();
     }
 
@@ -83,12 +72,12 @@ public class GameManager : MonoBehaviour
 
         int slotCursor = 0;
 
-        foreach (var entry in currentLevelData.itemScores)
+        foreach (var itemData in items)
         {
             RectTransform spawnSlot = shuffledSlots[slotCursor];
 
             ItemUI item = Instantiate(itemPrefab, uiItemRoot);
-            item.SetItemData(entry.item);
+            item.SetItemData(itemData);
 
             int originalIndex = itemSpawnSlots.IndexOf(spawnSlot);
             item.SetOriginalSpawnSlot(originalIndex);
@@ -96,7 +85,7 @@ public class GameManager : MonoBehaviour
             item.transform.SetParent(spawnSlot, false);
             item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
-            spawnedItems.Add(entry.item.itemId, item);
+            spawnedItems.Add(itemData.itemId, item);
             slotCursor++;
         }
     }
@@ -156,10 +145,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveProgress()
     {
-        SaveSystem.SaveData data = new SaveSystem.SaveData
-        {
-            currentLevelIndex = currentLevelIndex
-        };
+        SaveSystem.SaveData data = new SaveSystem.SaveData{};
 
         foreach (var pair in spawnedItems)
         {
@@ -204,12 +190,10 @@ public class GameManager : MonoBehaviour
 
     private ItemData FindItemDataById(string id)
     {
-        foreach (var level in levels)
+        foreach(var item in items)
         {
-            foreach (var entry in level.itemScores)
-            {
-                if (entry.item.itemId == id)
-                    return entry.item;
+            if(item.itemId == id){
+                return item;
             }
         }
         return null;
