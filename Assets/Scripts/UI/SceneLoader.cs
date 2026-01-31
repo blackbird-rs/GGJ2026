@@ -13,6 +13,17 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void NewGame(int sceneIndex)
+    {
+        SaveSystem.ClearSave();
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void ContinueGame(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
     public void QuitGame()
     {
         Application.Quit();

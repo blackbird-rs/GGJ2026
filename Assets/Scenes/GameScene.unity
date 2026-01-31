@@ -244,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (4)
+      value: SpawnSlot5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -483,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (8)
+      value: SpawnSlot9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -585,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (12)
+      value: SpawnSlot13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -687,7 +687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (14)
+      value: SpawnSlot15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -881,7 +881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (6)
+      value: SpawnSlot7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -983,7 +983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (3)
+      value: SpawnSlot4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1085,7 +1085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (2)
+      value: SpawnSlot3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1430,7 +1430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (10)
+      value: SpawnSlot11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1583,7 +1583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (11)
+      value: SpawnSlot12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1685,7 +1685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (9)
+      value: SpawnSlot10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1920,7 +1920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (7)
+      value: SpawnSlot8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2022,7 +2022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (1)
+      value: SpawnSlot2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2044,7 +2044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499880333}
   m_Layer: 5
-  m_Name: PlacementSlots
+  m_Name: SpawnSlots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2174,7 +2174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (5)
+      value: SpawnSlot6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2351,7 +2351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot (13)
+      value: SpawnSlot14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2412,22 +2412,7 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: 78d485fbd67c42842aa4da794f2df2d9, type: 2}
   itemPrefab: {fileID: 8061802773661104289, guid: 09f02097a87f53b46a5b3db58598ada9, type: 3}
-  itemPlacementSlots:
-  - {fileID: 4562689117132800806}
-  - {fileID: 1485061993}
-  - {fileID: 886120750}
-  - {fileID: 697484153}
-  - {fileID: 130161084}
-  - {fileID: 1580614127}
-  - {fileID: 462477775}
-  - {fileID: 1478417440}
-  - {fileID: 219842302}
-  - {fileID: 1344452667}
-  - {fileID: 1293011858}
-  - {fileID: 1338200652}
-  - {fileID: 325697939}
-  - {fileID: 2026683486}
-  - {fileID: 408113251}
+  itemSpawnSlots: []
 --- !u!1001 &4562689117132800805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2518,7 +2503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835300559814882538, guid: 8c3f8f95c9f121e48803e9c6e5aa3eca, type: 3}
       propertyPath: m_Name
-      value: ItemPlacementSlot
+      value: SpawnSlot1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

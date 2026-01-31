@@ -10,6 +10,7 @@ public class ItemUI : MonoBehaviour,
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Image image;
+    private string itemId;
 
     private Transform originalParent;
     private Vector2 originalPosition;
@@ -29,6 +30,7 @@ public class ItemUI : MonoBehaviour,
 
     public void SetItemData(ItemData data){
         image.sprite = data.icon;
+        itemId = data.itemId;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -66,5 +68,9 @@ public class ItemUI : MonoBehaviour,
     {
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = originalPosition;
+    }
+
+    public string getItemId(){
+        return itemId;
     }
 }
