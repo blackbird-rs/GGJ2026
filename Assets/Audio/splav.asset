@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa6550698da43c1b53b4ea42370af91, type: 3}
+  m_Name: splav
+  m_EditorClassIdentifier: Assembly-CSharp::Audio.AudioClipSettings
+  audioType: 1
+  variants:
+  - {fileID: 8300000, guid: 264b1d84f4a7b4c559838a209d2761de, type: 3}
+  defaultVolume: 0
+  limitBehaviour: 1
