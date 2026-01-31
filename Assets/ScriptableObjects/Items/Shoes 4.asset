@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4acc6a83be6f5842a98c3fda89bdb50, type: 3}
-  m_Name: Hat 1
+  m_Name: Shoes 4
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: hat_1
-  itemType: 0
-  icon: {fileID: 4374584902314765103, guid: cf9997e0f6850b542b21e84acde40469, type: 3}
+  itemId: shoes_4
+  itemType: 2
+  icon: {fileID: -2295225040651015236, guid: 4ba2752b2f051084cb7904e0ad889ee4, type: 3}

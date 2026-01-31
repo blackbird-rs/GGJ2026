@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4acc6a83be6f5842a98c3fda89bdb50, type: 3}
   m_Name: Shoes 1
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: item_7
+  itemId: shoes_1
   itemType: 2
   icon: {fileID: 4013618799789763026, guid: 2909c5711c3edd049983369713b06d7f, type: 3}
