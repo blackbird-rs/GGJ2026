@@ -143,7 +143,8 @@ public void FitToParent()
     );
 
     rectTransform.anchoredPosition = Vector2.zero;
-    rectTransform.localScale = Vector3.one * scale;
-}
+    rectTransform.localScale = Vector3.one;
 
+    imageRect.localScale = Vector3.one * scale;
+}
 }
