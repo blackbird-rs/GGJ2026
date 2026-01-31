@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClothingSlotUI : MonoBehaviour
 {
     public ItemType acceptedItemType;
     public RectTransform clothingLayer;
+    public Image additionalLayer;
 
     private ItemUI currentItem;
     public ItemUI GetCurrentItem() => currentItem;

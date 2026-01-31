@@ -9,10 +9,12 @@ public class ItemUI : MonoBehaviour,
     private RectTransform rectTransform;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
-    private Image image;
+    public Image image;
 
     private ItemData itemData;
     private ClothingSlotUI currentSlot;
+    private RectTransform imageRect;
+
 
     private int originalSpawnSlotIndex = -1;
 
@@ -25,13 +27,15 @@ public class ItemUI : MonoBehaviour,
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GetComponentInParent<Canvas>();
-        image = GetComponent<Image>();
+        imageRect = image.rectTransform;
+
     }
 
     public void SetItemData(ItemData data)
     {
         itemData = data;
         image.sprite = data.icon;
+        image.SetNativeSize();
     }
 
     public ItemData GetItemData() => itemData;
@@ -70,6 +74,12 @@ public class ItemUI : MonoBehaviour,
             out Vector2 localPoint
         );
 
+        if(currentSlot != null && currentSlot.additionalLayer != null){
+            var color = currentSlot.additionalLayer.color; 
+            color.a = 0f;
+            currentSlot.additionalLayer.color = color;
+        }
+
         rectTransform.localPosition = localPoint - pointerOffset;
     }
 
@@ -88,9 +98,15 @@ public class ItemUI : MonoBehaviour,
         wasDroppedOnFigure = true;
         currentSlot = slot;
 
+        if(itemData.additionalItem != null){
+            slot.additionalLayer.sprite = itemData.additionalItem;
+            var color = currentSlot.additionalLayer.color; 
+            color.a = 1f;
+            currentSlot.additionalLayer.color = color;
+        }
+
         transform.SetParent(target, false);
-        rectTransform.anchoredPosition = Vector2.zero;
-        rectTransform.localScale = Vector3.one;
+        FitToParent();
     }
 
     public void ReturnToOriginal()
@@ -105,7 +121,29 @@ public class ItemUI : MonoBehaviour,
             GameManager.Instance.itemSpawnSlots[originalSpawnSlotIndex];
 
         transform.SetParent(spawnSlot, false);
-        rectTransform.anchoredPosition = Vector2.zero;
-        rectTransform.localScale = Vector3.one;
+        FitToParent();
     }
+
+    
+public void FitToParent()
+{
+    RectTransform parent = rectTransform.parent as RectTransform;
+    if (parent == null)
+        return;
+
+    Vector2 slotSize = parent.rect.size;
+    Vector2 imageSize = imageRect.rect.size;
+
+    if (imageSize.x <= 0 || imageSize.y <= 0)
+        return;
+
+    float scale = Mathf.Min(
+        slotSize.x / imageSize.x,
+        slotSize.y / imageSize.y
+    );
+
+    rectTransform.anchoredPosition = Vector2.zero;
+    rectTransform.localScale = Vector3.one * scale;
+}
+
 }

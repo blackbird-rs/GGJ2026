@@ -69,7 +69,7 @@ public class GameManager : MonoSingleton<GameManager>
             item.SetOriginalSpawnSlot(originalIndex);
 
             item.transform.SetParent(spawnSlot, false);
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            item.FitToParent();
 
             spawnedItems.Add(itemData.itemId, item);
             slotCursor++;
@@ -95,7 +95,7 @@ public class GameManager : MonoSingleton<GameManager>
             item.SetOriginalSpawnSlot(spawn.slotIndex);
 
             item.transform.SetParent(spawnSlot, false);
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            item.FitToParent();
 
             spawnedItems.Add(itemData.itemId, item);
         }

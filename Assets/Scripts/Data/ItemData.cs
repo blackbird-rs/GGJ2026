@@ -9,4 +9,7 @@ public class ItemData : ScriptableObject
     public ItemType itemType;
 
     public Sprite icon;
+
+    public Sprite clothingItem;
+    public Sprite additionalItem;
 }
