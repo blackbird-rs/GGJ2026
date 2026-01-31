@@ -26,6 +26,8 @@ public class PipaUI : MonoBehaviour, IDropHandler
 
     public void StartLevel(IEnumerable<ItemData> equippedItems)
     {
+        gameObject.SetActive(true);
+
         foreach (var newItem in equippedItems)
         {
             foreach (var slot in clothingSlots)
