@@ -12,16 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cfd23e25544fe4da7a8ac0f367bdda, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelId: Level1
+  levelPrefab: {fileID: 7184479099893075796, guid: 41f59efb0778e43dabcbe50662e7cd6b, type: 3}
   itemScores:
   - item: {fileID: 11400000, guid: dd6f98b8267380447816b4abc0f0a1e1, type: 2}
-    scoreValue: 5
+    conformity: 0
+    creativity: 0
   - item: {fileID: 11400000, guid: f9df5ffcb68cbea4195dbdae16836e51, type: 2}
-    scoreValue: 10
+    conformity: 0
+    creativity: 0
   - item: {fileID: 11400000, guid: 0320c37361530934dba8b6e0b57bd395, type: 2}
-    scoreValue: 5
+    conformity: 0
+    creativity: 0
   - item: {fileID: 11400000, guid: 6fc9e289ed0f0ac47b2758c846743527, type: 2}
-    scoreValue: 10
+    conformity: 0
+    creativity: 0
   - item: {fileID: 11400000, guid: 5b7f3c8ef6e08f747b7c118b5c6e542d, type: 2}
-    scoreValue: 5
+    conformity: 0
+    creativity: 0
   - item: {fileID: 11400000, guid: 8e189a67af92a2b4184298985fe794c2, type: 2}
-    scoreValue: 10
+    conformity: 0
+    creativity: 0
