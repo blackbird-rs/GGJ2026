@@ -51,6 +51,8 @@ public class LocationLevelManager : MonoBehaviour
         var saveData = SaveSystem.LoadGame();
         saveData.levelScores[saveData.currentLevelIndex] = averageScore;
         saveData.currentLevelIndex += 1;
+        saveData.itemPlacements.Clear();
+        saveData.itemSpawns.Clear();
         SaveSystem.SaveGame(saveData);
 
         sceneLoader.LoadSceneByIndex(1);
