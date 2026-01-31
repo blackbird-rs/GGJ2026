@@ -408,7 +408,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 78d485fbd67c42842aa4da794f2df2d9, type: 2}
   locationHolder: {fileID: 853847660}
   pipaUI: {fileID: 837042006}
-  judgesUI: {fileID: 0}
+  judgesUI: {fileID: 998294633}
   sceneLoader: {fileID: 1557300626}
 --- !u!224 &734246024 stripped
 RectTransform:
@@ -674,6 +674,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 789130075904070768, guid: 24da0bfcfa2df98259f869d938afeca3, type: 3}
   m_PrefabInstance: {fileID: 998294631}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &998294633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7050408246712368033, guid: 24da0bfcfa2df98259f869d938afeca3, type: 3}
+  m_PrefabInstance: {fileID: 998294631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6ab0ae1cb942bd8f12eee59a48a1ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JudgesUI
 --- !u!1 &1557300622
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class ConformityJudge : Judge
         foreach (var item in items)
         {
             var conformity = levelData.GetConformityForItem(item);
-            totalScore += conformity;
+            totalScore += 0.5f * (1 + conformity);
             if (conformity >= 0.5f)
             {
                 bonusMultiplier *= 1.26f;
