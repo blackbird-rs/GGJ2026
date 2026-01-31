@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private ItemData FindItemDataById(string id)
+    public ItemData FindItemDataById(string id)
     {
         foreach(var item in items)
         {

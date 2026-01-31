@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,6 +22,17 @@ public class PipaUI : MonoBehaviour, IDropHandler
         }
 
         newItem.ReturnToOriginal();
+    }
+
+    public void StartLevel(IEnumerable<ItemData> equippedItems)
+    {
+        foreach (var newItem in equippedItems)
+        {
+            foreach (var slot in clothingSlots)
+            {
+                slot.TryEquip(newItem);
+            }
+        }
     }
 
 }
