@@ -9,6 +9,7 @@ public class ClothingSlotUI : MonoBehaviour
     public ItemUI GetCurrentItem() => currentItem;
 
     public RectTransform uiItemRoot;
+    public ItemUI itemPrefab;
 
     public bool CanAccept(ItemUI item)
     {
@@ -31,7 +32,6 @@ public class ClothingSlotUI : MonoBehaviour
         currentItem = null;
         ItemUI item = Instantiate(itemPrefab, uiItemRoot);
         item.SetItemData(newItemData);
-        item.SetOriginalSpawnSlot(clothingLayer);
 
         currentItem = item;
         item.EquipTo(clothingLayer, this);
