@@ -42,8 +42,17 @@ public class GameManager : MonoBehaviour
     {
         ClearExistingItems();
 
-        if (SaveSystem.HasSave())
-            SpawnFromSave();
+        if (SaveSystem.HasSave()){
+            SaveSystem.SaveData data = SaveSystem.LoadGame();
+            if(data.itemSpawns.Count != 0){
+                SpawnFromSave();
+            }
+            else
+            {
+                SpawnRandom();
+                SaveProgress();
+            }
+        }
         else
         {
             SpawnRandom();
