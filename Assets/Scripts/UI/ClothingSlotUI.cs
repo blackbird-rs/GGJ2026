@@ -11,9 +11,9 @@ public class ClothingSlotUI : MonoBehaviour
     public RectTransform uiItemRoot;
     public ItemUI itemPrefab;
 
-    public bool CanAccept(ItemUI item)
+    public bool CanAccept(ItemData itemData)
     {
-        return item.GetItemData().itemType == acceptedItemType;
+        return itemData.itemType == acceptedItemType;
     }
 
     public void Equip(ItemUI newItem)
@@ -45,6 +45,12 @@ public class ClothingSlotUI : MonoBehaviour
 
     public bool TryEquip(ItemData newItem)
     {
-        throw new System.NotImplementedException();
+        if (!CanAccept(newItem))
+        {
+            return false;
+        }
+        
+        EquipFromData(newItem);
+        return true;
     }
 }

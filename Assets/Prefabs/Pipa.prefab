@@ -185,6 +185,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 8061802773661104289, guid: 09f02097a87f53b46a5b3db58598ada9, type: 3}
+    - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
+      propertyPath: uiItemRoot
+      value: 
+      objectReference: {fileID: 5797887258651105938}
+    - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
       propertyPath: acceptedItemType
       value: 2
       objectReference: {fileID: 0}
@@ -301,6 +309,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 8061802773661104289, guid: 09f02097a87f53b46a5b3db58598ada9, type: 3}
+    - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
+      propertyPath: uiItemRoot
+      value: 
+      objectReference: {fileID: 8118783250103745318}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -528,6 +544,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 8061802773661104289, guid: 09f02097a87f53b46a5b3db58598ada9, type: 3}
+    - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
+      propertyPath: uiItemRoot
+      value: 
+      objectReference: {fileID: 3060311060448902164}
     - target: {fileID: 7682358702033600004, guid: f5599c53a6e93ea4c9aec723c752b2d8, type: 3}
       propertyPath: acceptedItemType
       value: 1

@@ -14,7 +14,7 @@ public class PipaUI : MonoBehaviour, IDropHandler
 
         foreach (var slot in clothingSlots)
         {
-            if (slot.CanAccept(newItem))
+            if (slot.CanAccept(newItem.GetItemData()))
             {
                 slot.Equip(newItem);
                 return;
