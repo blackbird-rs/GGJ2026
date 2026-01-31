@@ -11,6 +11,7 @@ public class LocationLevelManager : MonoBehaviour
     public PipaUI pipaUI;
     public JudgesUI judgesUI;
     public SceneLoader sceneLoader;
+    public ItemDataCollection itemDataCollection;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class LocationLevelManager : MonoBehaviour
         var currentLevelData = levelsData.Find(x => x.levelIndex == levelIndex);
 
         var itemPlacements = saveData.itemPlacements;
-        var equippedItems = itemPlacements.Select(x => GameManager.Instance.FindItemDataById(x.itemId));
+        var equippedItems = itemPlacements.Select(x => itemDataCollection.FindItemDataById(x.itemId));
 
         locationHolder.ClearChildren();
         Instantiate(currentLevelData.levelPrefab, locationHolder);

@@ -17,6 +17,7 @@ public class ItemUI : MonoBehaviour,
 
 
     private int originalSpawnSlotIndex = -1;
+    private RectTransform originalSpawnSlot;
 
     private Vector2 pointerOffset;
 
@@ -40,9 +41,10 @@ public class ItemUI : MonoBehaviour,
 
     public ItemData GetItemData() => itemData;
 
-    public void SetOriginalSpawnSlot(int slotIndex)
+    public void SetOriginalSpawnSlot(int slotIndex, RectTransform slot)
     {
         originalSpawnSlotIndex = slotIndex;
+        originalSpawnSlot = slot;
     }
 
     public int GetOriginalSpawnSlot() => originalSpawnSlotIndex;
@@ -117,10 +119,7 @@ public class ItemUI : MonoBehaviour,
             currentSlot = null;
         }
 
-        RectTransform spawnSlot =
-            GameManager.Instance.itemSpawnSlots[originalSpawnSlotIndex];
-
-        transform.SetParent(spawnSlot, false);
+        transform.SetParent(originalSpawnSlot, false);
         FitToParent();
     }
 

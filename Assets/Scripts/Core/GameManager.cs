@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GameManager : MonoSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
     public int totalScore;
 
-    public ItemData[] items;
+    public ItemDataCollection itemDataCollection;
     public ItemUI itemPrefab;
 
     public RectTransform uiItemRoot;
@@ -21,7 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
         InitializeGame();
     }
 
-    private void InitializeGame()
+    public void InitializeGame()
     {
         clothingSlots = pipa.clothingSlots;
 
@@ -58,7 +58,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         int slotCursor = 0;
 
-        foreach (var itemData in items)
+        foreach (var itemData in itemDataCollection.items)
         {
             RectTransform spawnSlot = shuffledSlots[slotCursor];
 
@@ -66,7 +66,7 @@ public class GameManager : MonoSingleton<GameManager>
             item.SetItemData(itemData);
 
             int originalIndex = itemSpawnSlots.IndexOf(spawnSlot);
-            item.SetOriginalSpawnSlot(originalIndex);
+            item.SetOriginalSpawnSlot(originalIndex, spawnSlot);
 
             item.transform.SetParent(spawnSlot, false);
             item.FitToParent();
@@ -84,7 +84,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         foreach (var spawn in saveData.itemSpawns)
         {
-            ItemData itemData = FindItemDataById(spawn.itemId);
+            ItemData itemData = itemDataCollection.FindItemDataById(spawn.itemId);
             if (itemData == null)
                 continue;
 
@@ -92,7 +92,7 @@ public class GameManager : MonoSingleton<GameManager>
 
             ItemUI item = Instantiate(itemPrefab, uiItemRoot);
             item.SetItemData(itemData);
-            item.SetOriginalSpawnSlot(spawn.slotIndex);
+            item.SetOriginalSpawnSlot(spawn.slotIndex, spawnSlot);
 
             item.transform.SetParent(spawnSlot, false);
             item.FitToParent();
@@ -172,16 +172,5 @@ public class GameManager : MonoSingleton<GameManager>
             int randomIndex = Random.Range(i, list.Count);
             (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
         }
-    }
-
-    public ItemData FindItemDataById(string id)
-    {
-        foreach(var item in items)
-        {
-            if(item.itemId == id){
-                return item;
-            }
-        }
-        return null;
     }
 }
