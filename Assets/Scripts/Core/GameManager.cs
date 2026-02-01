@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void ShowTutorialPopup(){
-        popup.Open("Biba has chalkfull of commitments on her trip to Belgrade. Help her leave a good impression!", result => Debug.Log(result));
+        popup.Open("Biba has a busy day ahead! Dress up to leave a good impression. Bonus points for creativity.", result => Debug.Log(result));
     }
 
     private void SpawnRandom()
