@@ -31,7 +31,6 @@ public class LocationLevelManager : MonoBehaviour
 
         locationHolder.ClearChildren();
         Instantiate(currentLevelData.levelPrefab, locationHolder);
-        pipaUI.gameObject.SetActive(false);
         judgesUI.gameObject.SetActive(false);
         JudgyAudioManager.Instance.FadeToState(levelIndex);
 
@@ -40,8 +39,6 @@ public class LocationLevelManager : MonoBehaviour
 
     private IEnumerator LocationFlow(LevelData currentLevelData, IEnumerable<ItemData> equippedItems)
     {
-        yield return new WaitForSeconds(1f);
-
         pipaUI.StartLevel(equippedItems);
 
         yield return new WaitForSeconds(3f);
@@ -71,6 +68,7 @@ public class LocationLevelManager : MonoBehaviour
                 < 6.5f => "You managed to fit in just fine",
                 _ => "You understood the vibe... And improved it!",
             };
+            SaveSystem.ClearSave();
             endGamePopup.Open(finalText, BackToDressingRoom, $"{finalScore:0.0}");
         }
     }
