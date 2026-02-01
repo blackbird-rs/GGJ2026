@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7254544145461486897
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 466, y: 4}
-  m_SizeDelta: {x: 450, y: 300}
+  m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5482866747434952536
 CanvasRenderer:
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -547,6 +547,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 4dd886456a2897914ac0ef50f7d4810d, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 4dd886456a2897914ac0ef50f7d4810d, type: 2}
+  - {fileID: 7400000, guid: 6c839723002d385bd8335c565e2c25e0, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -1057,6 +1058,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: JudgePile
       objectReference: {fileID: 0}
+    - target: {fileID: 3383553824297516506, guid: b049e8665e1832f52ac4b92b928f8d75, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768653988109529775, guid: b049e8665e1832f52ac4b92b928f8d75, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442251589398979083, guid: b049e8665e1832f52ac4b92b928f8d75, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831046800180889252, guid: b049e8665e1832f52ac4b92b928f8d75, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7295397744772260649, guid: b049e8665e1832f52ac4b92b928f8d75, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1136,6 +1153,10 @@ PrefabInstance:
     - target: {fileID: 7295397744772260649, guid: b049e8665e1832f52ac4b92b928f8d75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135259410249889663, guid: b049e8665e1832f52ac4b92b928f8d75, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
