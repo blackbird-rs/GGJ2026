@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,9 +9,12 @@ public class GameManager : MonoBehaviour
 
     public ItemDataCollection itemDataCollection;
     public ItemUI itemPrefab;
+    public LevelData[] levels;
+    private int currentLevelIndex;
 
     public RectTransform uiItemRoot;
     public List<RectTransform> itemSpawnSlots;
+    public TextMeshProUGUI levelHint;
     public PipaUI pipa;
 
     private ClothingSlotUI[] clothingSlots;
@@ -28,14 +33,22 @@ public class GameManager : MonoBehaviour
         if (SaveSystem.HasSave())
         {
             SaveSystem.SaveData data = SaveSystem.LoadGame();
+            currentLevelIndex = data.currentLevelIndex;
         }
         else
         {
             Debug.Log("NEW GAME");
+            currentLevelIndex = 0;
         }
 
         totalScore = 0;
+        Debug.LogError("level: " + currentLevelIndex);
+        ApplyHint();
         SpawnItems();
+    }
+
+    private void ApplyHint(){
+        levelHint.text = levels[currentLevelIndex].levelHint;
     }
 
     private void SpawnItems()
@@ -140,7 +153,15 @@ public class GameManager : MonoBehaviour
 
     public void SaveProgress()
     {
-        SaveSystem.SaveData data = new SaveSystem.SaveData{};
+        SaveSystem.SaveData data;
+        if(SaveSystem.HasSave()){
+            data = SaveSystem.LoadGame();
+            data.itemPlacements.Clear();
+            data.itemSpawns.Clear();
+        }
+        else{
+            data = new SaveSystem.SaveData{};
+        }
 
         foreach (var pair in spawnedItems)
         {
@@ -165,7 +186,7 @@ public class GameManager : MonoBehaviour
                 clothingSlotIndex = i
             });
         }
-
+        data.currentLevelIndex = currentLevelIndex;
         SaveSystem.SaveGame(data);
     }
 

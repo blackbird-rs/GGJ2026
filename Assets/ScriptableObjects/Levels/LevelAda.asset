@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LevelAda
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelIndex: 2
-  levelHint: 
+  levelHint: 'Shoes are optional and nobody is in a hurry.  '
   levelPrefab: {fileID: 7184479099893075796, guid: 270b5119504e64f34807a18cf1c09e24, type: 3}
   itemScores: []

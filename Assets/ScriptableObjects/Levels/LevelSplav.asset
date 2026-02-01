@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LevelSplav
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelIndex: 1
-  levelHint: 
+  levelHint: 'Water is close and so is the noise.  '
   levelPrefab: {fileID: 7184479099893075796, guid: d12609b6e922e46209ca1b973246a94c, type: 3}
   itemScores: []
