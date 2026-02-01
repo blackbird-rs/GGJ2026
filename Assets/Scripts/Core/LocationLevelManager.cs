@@ -64,8 +64,8 @@ public class LocationLevelManager : MonoBehaviour
             var finalScore = saveData.levelScores.Average();
             var finalText = finalScore switch
             {
-                < 5.0f => "You didn't fit in, but at least you made it memorable...",
-                < 6.5f => "You managed to fit in just fine",
+                < 6.0f => "You didn't fit in, but at least you made it memorable...",
+                < 7.5f => "You managed to fit in just fine",
                 _ => "You understood the vibe... And improved it!",
             };
             SaveSystem.ClearSave();

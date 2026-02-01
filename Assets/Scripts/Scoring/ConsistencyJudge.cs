@@ -6,6 +6,11 @@ public class ConsistencyJudge : Judge
 {
     protected override float GetNormalizedScore(LevelData levelData, IEnumerable<ItemData> items)
     {
+        if (!items.Any())
+        {
+            return 0.5f;
+        }
+
         var saveData = SaveSystem.LoadGame();
         float totalScore = 0; // 3-6
         float bonusMultiplier = 1; // 1-1.5
@@ -14,12 +19,12 @@ public class ConsistencyJudge : Judge
             if (saveData.oldItems.Contains(item.itemId) && saveData.olderItems.Contains(item.itemId))
             {
                 totalScore += 2;
-                bonusMultiplier = Mathf.Min(bonusMultiplier, 1.5f);
+                bonusMultiplier = Mathf.Max(bonusMultiplier, 1.5f);
             }
             else if (saveData.oldItems.Contains(item.itemId) || saveData.olderItems.Contains(item.itemId))
             {
                 totalScore += 1.5f;
-                bonusMultiplier = Mathf.Min(bonusMultiplier, 1.25f);
+                bonusMultiplier = Mathf.Max(bonusMultiplier, 1.25f);
             }
             else
             {
@@ -31,6 +36,6 @@ public class ConsistencyJudge : Judge
         saveData.oldItems = items.Select(x => x.itemId).ToList();
         SaveSystem.SaveGame(saveData);
 
-        return totalScore * bonusMultiplier / 6; // 0.5-1.5
+        return totalScore * bonusMultiplier / items.Count() / 2; // 0.5-1.5
     }
 }
