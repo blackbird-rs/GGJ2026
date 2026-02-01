@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JudgyAudioManager
   musicDefaultVolume: 0.5
-  musicFadeDuration: 1
+  musicFadeDuration: 2
   defaultState: {fileID: 11400000, guid: e18a5a5f597e9418e811e80bc584dde4, type: 2}
   levelStates:
   - {fileID: 11400000, guid: 9e897d2f9a52f4cada1db534a71ac787, type: 2}
