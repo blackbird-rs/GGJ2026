@@ -64,7 +64,9 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                ShowTutorialPopup();
+                if(currentLevelIndex == 0){
+                    ShowTutorialPopup();
+                }
                 SpawnRandom();
                 SaveProgress();
             }
