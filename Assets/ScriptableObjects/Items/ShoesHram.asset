@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: shoes_0
   itemType: 2
+  itemSize: 1
   icon: {fileID: 21300000, guid: 562f8b6a7ddf2061bbf9464c776b1116, type: 3}
-  clothingItem: {fileID: 0}
+  clothingItem: {fileID: 21300000, guid: ea557b543f9a0814b84d4354b5519459, type: 3}
   additionalItem: {fileID: 21300000, guid: 562f8b6a7ddf2061bbf9464c776b1116, type: 3}
