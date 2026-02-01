@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fa6550698da43c1b53b4ea42370af91, type: 3}
-  m_Name: default
+  m_Name: main
   m_EditorClassIdentifier: Assembly-CSharp::Audio.AudioClipSettings
   audioType: 1
   variants:
-  - {fileID: 8300000, guid: da4147005acfb4d8ab1c13714b5ce5dd, type: 3}
+  - {fileID: 8300000, guid: f6a9fb9ad901246ea90279d2dccf7316, type: 3}
   defaultVolume: 0.5
   limitBehaviour: 1
