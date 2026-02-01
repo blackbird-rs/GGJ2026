@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class ItemUI : MonoBehaviour,
-    IBeginDragHandler, IDragHandler, IEndDragHandler
+    IBeginDragHandler, IDragHandler, IEndDragHandler,
+    ICanvasRaycastFilter
 {
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -35,7 +36,12 @@ public class ItemUI : MonoBehaviour,
     public void SetItemData(ItemData data)
     {
         itemData = data;
-        image.sprite = data.icon;
+        if(data.clothingItem == null){
+            image.sprite = data.icon;
+        }
+        else{
+            image.sprite = data.clothingItem;
+        }
         image.SetNativeSize();
     }
 
@@ -82,6 +88,10 @@ public class ItemUI : MonoBehaviour,
             currentSlot.additionalLayer.color = color;
         }
 
+        if(itemData.clothingItem != null) {
+            image.sprite = itemData.clothingItem;
+        }
+
         rectTransform.localPosition = localPoint - pointerOffset;
     }
 
@@ -105,6 +115,9 @@ public class ItemUI : MonoBehaviour,
             var color = currentSlot.additionalLayer.color; 
             color.a = 1f;
             currentSlot.additionalLayer.color = color;
+        }
+        if(itemData.clothingItem != null){
+            image.sprite = itemData.icon;
         }
 
         transform.SetParent(target, false);
@@ -146,4 +159,36 @@ public void FitToParent()
 
     imageRect.localScale = Vector3.one * scale;
 }
+
+public bool IsRaycastLocationValid(Vector2 screenPoint, Camera eventCamera)
+{
+    if (image == null || image.sprite == null)
+        return false;
+
+    RectTransformUtility.ScreenPointToLocalPointInRectangle(
+        image.rectTransform,
+        screenPoint,
+        eventCamera,
+        out Vector2 localPoint
+    );
+
+    Rect rect = image.rectTransform.rect;
+
+    float x = (localPoint.x - rect.x) / rect.width;
+    float y = (localPoint.y - rect.y) / rect.height;
+
+    if (x < 0f || x > 1f || y < 0f || y > 1f)
+        return false;
+
+    Texture2D tex = image.sprite.texture;
+    Rect spriteRect = image.sprite.textureRect;
+
+    int texX = Mathf.FloorToInt(spriteRect.x + x * spriteRect.width);
+    int texY = Mathf.FloorToInt(spriteRect.y + y * spriteRect.height);
+
+    Color color = tex.GetPixel(texX, texY);
+
+    return color.a > 0.1f;
+}
+
 }

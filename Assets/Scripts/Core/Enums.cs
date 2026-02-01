@@ -5,3 +5,10 @@ public enum ItemType {
     Outfit,
     Shoes
 }
+
+public enum ItemSize {
+    Small,
+    Medium,
+    Large,
+    LargeHat
+}

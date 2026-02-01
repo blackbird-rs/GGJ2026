@@ -75,29 +75,52 @@ public class GameManager : MonoBehaviour
     }
 
     private void SpawnRandom()
+{
+    List<RectTransform> availableSlots = new(itemSpawnSlots);
+    Shuffle(availableSlots);
+
+    foreach (var itemData in itemDataCollection.items)
     {
-        List<RectTransform> shuffledSlots = new(itemSpawnSlots);
-        Shuffle(shuffledSlots);
+        RectTransform chosenSlot = null;
 
-        int slotCursor = 0;
-
-        foreach (var itemData in itemDataCollection.items)
+        for (int i = 0; i < availableSlots.Count; i++)
         {
-            RectTransform spawnSlot = shuffledSlots[slotCursor];
+            ItemSpawnSlot slotData =
+                availableSlots[i].GetComponent<ItemSpawnSlot>();
 
-            ItemUI item = Instantiate(itemPrefab, uiItemRoot);
-            item.SetItemData(itemData);
+            if (slotData == null)
+                continue;
 
-            int originalIndex = itemSpawnSlots.IndexOf(spawnSlot);
-            item.SetOriginalSpawnSlot(originalIndex, spawnSlot);
-
-            item.transform.SetParent(spawnSlot, false);
-            item.FitToParent();
-
-            spawnedItems.Add(itemData.itemId, item);
-            slotCursor++;
+            if (slotData.acceptedSize == itemData.itemSize)
+            {
+                chosenSlot = availableSlots[i];
+                availableSlots.RemoveAt(i);
+                break;
+            }
         }
+
+        if (chosenSlot == null)
+        {
+            Debug.LogWarning(
+                $"No spawn slot available for item {itemData.itemId} " +
+                $"with size {itemData.itemSize}"
+            );
+            continue;
+        }
+
+        ItemUI item = Instantiate(itemPrefab, uiItemRoot);
+        item.SetItemData(itemData);
+
+        int originalIndex = itemSpawnSlots.IndexOf(chosenSlot);
+        item.SetOriginalSpawnSlot(originalIndex, chosenSlot);
+
+        item.transform.SetParent(chosenSlot, false);
+        item.FitToParent();
+
+        spawnedItems.Add(itemData.itemId, item);
     }
+}
+
 
     private void SpawnFromSave()
     {
