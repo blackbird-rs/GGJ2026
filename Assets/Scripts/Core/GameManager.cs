@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public List<RectTransform> itemSpawnSlots;
     public TextMeshProUGUI levelHint;
     public PipaUI pipa;
+    public AlertPopup popup;
 
     private ClothingSlotUI[] clothingSlots;
 
@@ -63,15 +64,21 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                ShowTutorialPopup();
                 SpawnRandom();
                 SaveProgress();
             }
         }
         else
         {
+            ShowTutorialPopup();
             SpawnRandom();
             SaveProgress();
         }
+    }
+
+    private void ShowTutorialPopup(){
+        popup.Open("Biba has chalkfull of commitments on her trip to Belgrade. Help her leave a good impression!", result => Debug.Log(result));
     }
 
     private void SpawnRandom()
