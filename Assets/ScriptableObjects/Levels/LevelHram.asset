@@ -19,18 +19,45 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: dd6f98b8267380447816b4abc0f0a1e1, type: 2}
     conformity: 1
     creativity: 0
-  - item: {fileID: 11400000, guid: f9df5ffcb68cbea4195dbdae16836e51, type: 2}
-    conformity: -1
-    creativity: 0
   - item: {fileID: 11400000, guid: 0320c37361530934dba8b6e0b57bd395, type: 2}
     conformity: 1
     creativity: 0
-  - item: {fileID: 11400000, guid: 6fc9e289ed0f0ac47b2758c846743527, type: 2}
-    conformity: -1
-    creativity: 0.491
   - item: {fileID: 11400000, guid: 5b7f3c8ef6e08f747b7c118b5c6e542d, type: 2}
     conformity: 1
     creativity: 0
+  - item: {fileID: 11400000, guid: f9df5ffcb68cbea4195dbdae16836e51, type: 2}
+    conformity: -1
+    creativity: 0.5
+  - item: {fileID: 11400000, guid: 6fc9e289ed0f0ac47b2758c846743527, type: 2}
+    conformity: -1
+    creativity: 0.5
   - item: {fileID: 11400000, guid: 8e189a67af92a2b4184298985fe794c2, type: 2}
-    conformity: -0.59
+    conformity: -1
+    creativity: 0.5
+  - item: {fileID: 11400000, guid: fa29f4b840836a44ba3917ff0cd0234f, type: 2}
+    conformity: -1
+    creativity: 0.5
+  - item: {fileID: 11400000, guid: 9f967235321cd2b4982418383d7107bd, type: 2}
+    conformity: -1
+    creativity: 0.5
+  - item: {fileID: 11400000, guid: 171b455cdb37ec543b3a3caa2bac88c2, type: 2}
+    conformity: -1
+    creativity: 0.5
+  - item: {fileID: 11400000, guid: c0749882439bf754fb9f6579bb16ecdd, type: 2}
+    conformity: 0.5
+    creativity: 1
+  - item: {fileID: 11400000, guid: 27d529c84d2fdd744b12663068b62b54, type: 2}
+    conformity: 0.5
+    creativity: 1
+  - item: {fileID: 11400000, guid: f5306f55012211c40b3288b14f8ac7f5, type: 2}
+    conformity: -1
+    creativity: 0.5
+  - item: {fileID: 11400000, guid: ed2196a005a2ae0488926fcb25c40254, type: 2}
+    conformity: 0.5
+    creativity: 1
+  - item: {fileID: 11400000, guid: c2ad94beeaaad7f46af01465ea830598, type: 2}
+    conformity: 0.5
+    creativity: 1
+  - item: {fileID: 11400000, guid: 589cf159dbb89c7498069bebe6c89ae5, type: 2}
+    conformity: 0.5
     creativity: 1
