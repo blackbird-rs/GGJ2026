@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CanvasGroup))]
 public class ItemUI : MonoBehaviour,
     IBeginDragHandler, IDragHandler, IEndDragHandler, 
-    IPointerEnterHandler, IPointerExitHandler,
+    IPointerEnterHandler,
     ICanvasRaycastFilter
 {
     private RectTransform rectTransform;
@@ -200,15 +200,7 @@ public bool IsRaycastLocationValid(Vector2 screenPoint, Camera eventCamera)
 
 public void OnPointerEnter(PointerEventData eventData)
 {
-    blockShake = true;
     shakeAnim.Play();
-    Debug.Log("Mouse entered!");
-}
-
-public void OnPointerExit(PointerEventData eventData)
-{
-    blockShake = false;
-    Debug.Log("Mouse exited!");
 }
 
 }
