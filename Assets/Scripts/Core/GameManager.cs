@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void ApplyHint(){
-        levelHint.text = levelDataCollection.levels[currentLevelIndex].levelHint;
+        levelHint.text = levelDataCollection.levels.First(x => x.levelIndex == currentLevelIndex).levelHint;
     }
 
     private void SpawnItems()
