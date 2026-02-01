@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LocationLevelManager : MonoBehaviour
 {
-    public List<LevelData> levelsData;
+    public LevelDataCollection levelDataCollection;
     public Transform locationHolder;
     public PipaUI pipaUI;
     public JudgesUI judgesUI;
@@ -23,7 +23,7 @@ public class LocationLevelManager : MonoBehaviour
         var saveData = SaveSystem.LoadGame();
 
         var levelIndex = saveData.currentLevelIndex;
-        var currentLevelData = levelsData.Find(x => x.levelIndex == levelIndex);
+        var currentLevelData = levelDataCollection.levels.First(x => x.levelIndex == levelIndex);
 
         var itemPlacements = saveData.itemPlacements;
         var equippedItems = itemPlacements.Select(x => itemDataCollection.FindItemDataById(x.itemId));
@@ -47,7 +47,7 @@ public class LocationLevelManager : MonoBehaviour
 
         var averageScore = judgesUI.StartLevel(currentLevelData, equippedItems);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(8f);
 
         var saveData = SaveSystem.LoadGame();
         saveData.levelScores[saveData.currentLevelIndex] = averageScore;

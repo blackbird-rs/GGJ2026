@@ -3199,10 +3199,7 @@ MonoBehaviour:
   totalScore: 0
   itemDataCollection: {fileID: 11400000, guid: 83df440e5a02a4edabfbbacf1fa5a8d1, type: 2}
   itemPrefab: {fileID: 8061802773661104289, guid: 09f02097a87f53b46a5b3db58598ada9, type: 3}
-  levels:
-  - {fileID: 11400000, guid: 78d485fbd67c42842aa4da794f2df2d9, type: 2}
-  - {fileID: 11400000, guid: 0a1220469e8cc4b14b0477d1bab2ebc5, type: 2}
-  - {fileID: 11400000, guid: 6e3881826fd0c4fd0bf8aad6e047ef48, type: 2}
+  levelDataCollection: {fileID: 11400000, guid: 88cd1dbe4698b4118aa0f262e275c840, type: 2}
   uiItemRoot: {fileID: 947210669}
   itemSpawnSlots:
   - {fileID: 4562689117132800806}
