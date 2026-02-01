@@ -6,7 +6,7 @@ public class CreativityJudge : Judge
     protected override float GetNormalizedScore(LevelData levelData, IEnumerable<ItemData> items)
     {
         float totalScore = 0; // 3-6
-        float bonusMultiplier = 1; // 1-1.5
+        float bonusMultiplier = 1; // 1-2
         foreach (var item in items)
         {
             var conformity = levelData.GetConformityForItem(item);
@@ -14,12 +14,12 @@ public class CreativityJudge : Judge
             totalScore += 1 + creativity;
             bonusMultiplier = conformity switch
             {
-                < 0f => Mathf.Min(bonusMultiplier, 1.5f),
-                < 0.95f => Mathf.Min(bonusMultiplier, 1.25f),
+                < 0f => Mathf.Min(bonusMultiplier, 2f),
+                < 0.95f => Mathf.Min(bonusMultiplier, 1.5f),
                 _ => bonusMultiplier
             };
         }
 
-        return totalScore * bonusMultiplier / 6; // 0.5-1.5
+        return totalScore * bonusMultiplier / 6; // 0.5-2
     }
 }

@@ -64,8 +64,14 @@ public class LocationLevelManager : MonoBehaviour
         }
         else
         {
-            var finalScore = saveData.levelScores.Sum() / saveData.levelScores.Length;
-            endGamePopup.Open("You understood the vibe... And improved it!", BackToDressingRoom, $"{finalScore:0.0}");
+            var finalScore = saveData.levelScores.Average();
+            var finalText = finalScore switch
+            {
+                < 6.0f => "You didn't fit in, but at least you made it memorable...",
+                < 6.5f => "You managed to fit in just fine",
+                _ => "You understood the vibe... And improved it!",
+            };
+            endGamePopup.Open(finalText, BackToDressingRoom, $"{finalScore:0.0}");
         }
     }
 
