@@ -32,6 +32,7 @@ public class LocationLevelManager : MonoBehaviour
         Instantiate(currentLevelData.levelPrefab, locationHolder);
         pipaUI.gameObject.SetActive(false);
         judgesUI.gameObject.SetActive(false);
+        JudgyAudioManager.Instance.FadeToState(levelIndex);
 
         StartCoroutine(LocationFlow(currentLevelData, equippedItems));
     }
@@ -54,6 +55,7 @@ public class LocationLevelManager : MonoBehaviour
         saveData.itemPlacements.Clear();
         saveData.itemSpawns.Clear();
         SaveSystem.SaveGame(saveData);
+        JudgyAudioManager.Instance.FadeToDefaultState();
 
         sceneLoader.LoadSceneByIndex(1);
     }
