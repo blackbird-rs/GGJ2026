@@ -12,7 +12,11 @@ public class JudgyAudioManager : AudioManager
     [SerializeField] private AudioClipSettings[] levelStates;
 
     [Header("Misc")]
+    [SerializeField] private AudioClipSettings applause;
+    [SerializeField] private AudioClipSettings click;
+    [SerializeField] private AudioClipSettings putOn;
     [SerializeField] private AudioClipSettings steps;
+    [SerializeField] private AudioClipSettings take;
 
     private int? _currentState;
 
@@ -51,5 +55,9 @@ public class JudgyAudioManager : AudioManager
         _currentState = state;
     }
 
+    public void Applause() => PlayAudio(applause);
+    public void Click() => PlayAudio(click);
+    public void PutOn() => PlayAudio(putOn);
     public void Steps() => PlayAudio(steps);
+    public void Take() => PlayAudio(take);
 }

@@ -54,4 +54,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5f50fcef27464afa955326ba9cbfd7d, type: 2}
   - {fileID: 11400000, guid: e157edb4fbd734b64bb6ab2aebab319f, type: 2}
   - {fileID: 11400000, guid: 38c421a6cd6da4b8d902f524e9168766, type: 2}
+  applause: {fileID: 11400000, guid: f76fdfccb19994f6d9f41b99c06fe350, type: 2}
+  click: {fileID: 11400000, guid: 3d2831736a25744c4a7ac3cb8df574c0, type: 2}
+  putOn: {fileID: 11400000, guid: af6707ebc6aca400e8f4701558f323df, type: 2}
   steps: {fileID: 11400000, guid: cda2dfcebad7645a5831a60079466707, type: 2}
+  take: {fileID: 11400000, guid: 49c998de877c7451e9c89d85f48bb974, type: 2}
