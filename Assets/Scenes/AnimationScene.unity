@@ -610,6 +610,7 @@ MonoBehaviour:
   judgesUI: {fileID: 998294633}
   sceneLoader: {fileID: 1557300626}
   itemDataCollection: {fileID: 11400000, guid: 83df440e5a02a4edabfbbacf1fa5a8d1, type: 2}
+  endGamePopup: {fileID: 2008999313}
 --- !u!4 &979071988
 Transform:
   m_ObjectHideFlags: 0
@@ -1058,6 +1059,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4690422534704432508, guid: c15ed3edc53b5e44881d811f4e5429e1, type: 3}
   m_PrefabInstance: {fileID: 2008999311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2008999313 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3114956161203024660, guid: c15ed3edc53b5e44881d811f4e5429e1, type: 3}
+  m_PrefabInstance: {fileID: 2008999311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85881743f6cd409083ef9bd32af3badd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlertPopup
 --- !u!1001 &3228760039827683705
 PrefabInstance:
   m_ObjectHideFlags: 0
