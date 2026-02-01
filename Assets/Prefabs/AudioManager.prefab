@@ -49,9 +49,9 @@ MonoBehaviour:
   defaultState: {fileID: 11400000, guid: e18a5a5f597e9418e811e80bc584dde4, type: 2}
   levelStates:
   - {fileID: 11400000, guid: 9e897d2f9a52f4cada1db534a71ac787, type: 2}
-  - {fileID: 11400000, guid: 38c421a6cd6da4b8d902f524e9168766, type: 2}
   - {fileID: 11400000, guid: 1323573653275431ca5f53296ec8360d, type: 2}
-  - {fileID: 11400000, guid: f5f50fcef27464afa955326ba9cbfd7d, type: 2}
   - {fileID: 11400000, guid: 509fcaa18db184fd1a707b2ee33cb742, type: 2}
+  - {fileID: 11400000, guid: f5f50fcef27464afa955326ba9cbfd7d, type: 2}
   - {fileID: 11400000, guid: e157edb4fbd734b64bb6ab2aebab319f, type: 2}
+  - {fileID: 11400000, guid: 38c421a6cd6da4b8d902f524e9168766, type: 2}
   steps: {fileID: 11400000, guid: cda2dfcebad7645a5831a60079466707, type: 2}
