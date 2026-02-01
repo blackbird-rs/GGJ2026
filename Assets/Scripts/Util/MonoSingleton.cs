@@ -67,6 +67,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             return;
         }
 
+        instance = this as T;
         ApplyPersistence();
         OnAwake();
     }

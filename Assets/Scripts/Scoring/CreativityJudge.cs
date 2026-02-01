@@ -15,7 +15,7 @@ public class CreativityJudge : Judge
             bonusMultiplier = conformity switch
             {
                 < 0f => Mathf.Min(bonusMultiplier, 1.5f),
-                < 0.5f => Mathf.Min(bonusMultiplier, 1.25f),
+                < 0.95f => Mathf.Min(bonusMultiplier, 1.25f),
                 _ => bonusMultiplier
             };
         }

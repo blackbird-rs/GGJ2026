@@ -40,7 +40,7 @@ public static class SaveSystem
         public int currentLevelIndex;
         public List<ItemSpawnData> itemSpawns = new();
         public List<ItemPlacementData> itemPlacements = new();
-        public Dictionary<int, float> levelScores = new();
+        public float[] levelScores = {0, 0, 0, 0, 0, 0};
 
         public List<string> oldItems = new();
         public List<string> olderItems = new();

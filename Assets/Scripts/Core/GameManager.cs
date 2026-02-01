@@ -30,15 +30,16 @@ public class GameManager : MonoBehaviour
     {
         clothingSlots = pipa.clothingSlots;
 
-        if (SaveSystem.HasSave())
+        SaveSystem.SaveData data = SaveSystem.LoadGame();
+        if (data != null && data.currentLevelIndex < levels.Length)
         {
-            SaveSystem.SaveData data = SaveSystem.LoadGame();
             currentLevelIndex = data.currentLevelIndex;
         }
         else
         {
             Debug.Log("NEW GAME");
             currentLevelIndex = 0;
+            SaveSystem.SaveGame(new SaveSystem.SaveData());
         }
 
         totalScore = 0;
