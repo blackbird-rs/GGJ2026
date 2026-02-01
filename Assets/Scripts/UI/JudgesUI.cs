@@ -27,6 +27,8 @@ public class JudgesUI: MonoBehaviour
 
     private IEnumerator JudgesFlow(List<int> scores, float averageScore)
     {
+        JudgyAudioManager.Instance.Applause();
+
         yield return new WaitForSeconds(0.5f);
 
         judges[0].StartLevel(scores[0]);

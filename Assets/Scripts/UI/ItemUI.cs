@@ -57,6 +57,8 @@ public class ItemUI : MonoBehaviour,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        JudgyAudioManager.Instance.Take();
+
         if (canvas == null)
             canvas = GetComponentInParent<Canvas>();
 
@@ -97,6 +99,8 @@ public class ItemUI : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        JudgyAudioManager.Instance.PutOn();
+
         canvasGroup.blocksRaycasts = true;
 
         if (!wasDroppedOnFigure)
