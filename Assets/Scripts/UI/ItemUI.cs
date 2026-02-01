@@ -4,13 +4,16 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class ItemUI : MonoBehaviour,
-    IBeginDragHandler, IDragHandler, IEndDragHandler,
+    IBeginDragHandler, IDragHandler, IEndDragHandler, 
+    IPointerEnterHandler, IPointerExitHandler,
     ICanvasRaycastFilter
 {
     private RectTransform rectTransform;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     public Image image;
+    public Animation shakeAnim;
+    private bool blockShake;
 
     private ItemData itemData;
     private ClothingSlotUI currentSlot;
@@ -193,6 +196,19 @@ public bool IsRaycastLocationValid(Vector2 screenPoint, Camera eventCamera)
     Color color = tex.GetPixel(texX, texY);
 
     return color.a > 0.1f;
+}
+
+public void OnPointerEnter(PointerEventData eventData)
+{
+    blockShake = true;
+    shakeAnim.Play();
+    Debug.Log("Mouse entered!");
+}
+
+public void OnPointerExit(PointerEventData eventData)
+{
+    blockShake = false;
+    Debug.Log("Mouse exited!");
 }
 
 }
