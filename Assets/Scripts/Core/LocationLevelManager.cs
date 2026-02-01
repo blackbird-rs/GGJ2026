@@ -12,6 +12,7 @@ public class LocationLevelManager : MonoBehaviour
     public JudgesUI judgesUI;
     public SceneLoader sceneLoader;
     public ItemDataCollection itemDataCollection;
+    public AlertPopup endGamePopup;
 
     private void Start()
     {
@@ -57,6 +58,19 @@ public class LocationLevelManager : MonoBehaviour
         SaveSystem.SaveGame(saveData);
         JudgyAudioManager.Instance.FadeToDefaultState();
 
+        if (saveData.currentLevelIndex < levelDataCollection.levels.Length)
+        {
+            BackToDressingRoom();
+        }
+        else
+        {
+            var finalScore = saveData.levelScores.Sum() / saveData.levelScores.Length;
+            endGamePopup.Open("You understood the vibe... And improved it!", BackToDressingRoom, $"{finalScore:0.0}");
+        }
+    }
+
+    private void BackToDressingRoom(bool _ = false)
+    {
         sceneLoader.LoadSceneByIndex(1);
     }
 }
