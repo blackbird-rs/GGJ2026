@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public ItemDataCollection itemDataCollection;
     public ItemUI itemPrefab;
-    public LevelData[] levels;
+    public LevelDataCollection levelDataCollection;
     private int currentLevelIndex;
 
     public RectTransform uiItemRoot;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         clothingSlots = pipa.clothingSlots;
 
         SaveSystem.SaveData data = SaveSystem.LoadGame();
-        if (data != null && data.currentLevelIndex < levels.Length)
+        if (data != null && data.currentLevelIndex < levelDataCollection.levels.Length)
         {
             currentLevelIndex = data.currentLevelIndex;
         }
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void ApplyHint(){
-        levelHint.text = levels[currentLevelIndex].levelHint;
+        levelHint.text = levelDataCollection.levels[currentLevelIndex].levelHint;
     }
 
     private void SpawnItems()

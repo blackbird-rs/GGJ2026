@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cfd23e25544fe4da7a8ac0f367bdda, type: 3}
   m_Name: LevelMall
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelIndex: 4
+  levelIndex: 2
   levelHint: You're not here for anything but you'll leave with something
   levelPrefab: {fileID: 7184479099893075796, guid: 0523c4a0c9a1f4d548b5396dc4fd61b3, type: 3}
   itemScores:
