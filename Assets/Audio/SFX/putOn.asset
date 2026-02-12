@@ -10,10 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fa6550698da43c1b53b4ea42370af91, type: 3}
-  m_Name: putOn
+  m_Name: PutOn
   m_EditorClassIdentifier: Assembly-CSharp::Audio.AudioClipSettings
-  audioType: 0
-  variants:
-  - {fileID: 8300000, guid: f1cb88760bab541b492fbaeb25032624, type: 3}
-  defaultVolume: 0.8
-  limitBehaviour: 0
+  <Clip>k__BackingField: {fileID: 8300000, guid: f1cb88760bab541b492fbaeb25032624, type: 3}
+  <Id>k__BackingField: PutOn
+  <UseVariants>k__BackingField: 0
+  <OtherVariants>k__BackingField: []
+  <AudioType>k__BackingField: 0
+  <StartBehaviour>k__BackingField: 0
+  <LimitBehaviour>k__BackingField: 0
+  <DefaultVolume>k__BackingField: 0.8
+  <FadeDurationSeconds>k__BackingField: 1
+  <HasChannel>k__BackingField: 0
+  <Channel>k__BackingField: 1

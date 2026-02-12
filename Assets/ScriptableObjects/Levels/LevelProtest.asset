@@ -15,6 +15,7 @@ MonoBehaviour:
   levelIndex: 3
   levelHint: Opinions are worn on the outside here
   levelPrefab: {fileID: 7184479099893075796, guid: 41dc29342a12545dd9230a4f5fd73a30, type: 3}
+  audioClipSettings: {fileID: 11400000, guid: f5f50fcef27464afa955326ba9cbfd7d, type: 2}
   itemScores:
   - item: {fileID: 11400000, guid: 8e189a67af92a2b4184298985fe794c2, type: 2}
     conformity: -1

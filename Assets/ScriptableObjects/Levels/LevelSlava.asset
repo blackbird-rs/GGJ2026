@@ -15,6 +15,7 @@ MonoBehaviour:
   levelIndex: 4
   levelHint: You're expected to eat, smile, and not ask too many questions
   levelPrefab: {fileID: 7184479099893075796, guid: 5d1f090a5d25249e7b851cc5b23c01b3, type: 3}
+  audioClipSettings: {fileID: 11400000, guid: e157edb4fbd734b64bb6ab2aebab319f, type: 2}
   itemScores:
   - item: {fileID: 11400000, guid: 0320c37361530934dba8b6e0b57bd395, type: 2}
     conformity: 0.5

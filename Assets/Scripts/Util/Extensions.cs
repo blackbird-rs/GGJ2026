@@ -8,6 +8,18 @@ using Random = System.Random;
 
 public static class Extensions
 {
+    public static string Capitalize(this string str)
+    {
+        if (str.IsNullOrWhitespace()) return str;
+        if (str.Length == 1) return str.ToUpper();
+        return char.ToUpper(str[0]) + str[1..];
+    }
+
+    public static bool IsNullOrWhitespace(this string str)
+    {
+        return string.IsNullOrWhiteSpace(str);
+    }
+
     public static void ClearChildren(this Transform transform)
     {
         foreach (Transform child in transform)

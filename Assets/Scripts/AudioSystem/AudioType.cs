@@ -4,5 +4,6 @@ namespace Audio
     {
         Sound = 0,
         Music = 1,
+        MusicIntro = 2,
     }
 }

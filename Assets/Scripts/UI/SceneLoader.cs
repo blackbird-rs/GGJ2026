@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,8 +6,8 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadSceneByIndex(int sceneIndex)
     {
-        JudgyAudioManager.Instance.Click();
-        JudgyAudioManager.Instance.Steps();
+        AudioManager.Instance.PlayClick();
+        AudioManager.Instance.PlaySteps();
         SceneManager.LoadScene(sceneIndex);
     }
 
@@ -17,14 +18,14 @@ public class SceneLoader : MonoBehaviour
 
     public void NewGame(int sceneIndex)
     {
-        JudgyAudioManager.Instance.Click();
+        AudioManager.Instance.PlayClick();
         SaveSystem.ClearSave();
         SceneManager.LoadScene(sceneIndex);
     }
 
     public void ContinueGame(int sceneIndex)
     {
-        JudgyAudioManager.Instance.Click();
+        AudioManager.Instance.PlayClick();
         SceneManager.LoadScene(sceneIndex);
     }
 

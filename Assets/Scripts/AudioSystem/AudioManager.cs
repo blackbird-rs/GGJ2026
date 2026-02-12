@@ -7,13 +7,15 @@ using Random = UnityEngine.Random;
 
 namespace Audio
 {
-	public class AudioManager : MonoSingleton<AudioManager>
+	public partial class AudioManager : MonoSingleton<AudioManager>
 	{
 		private readonly Dictionary<AudioClipSettings, Coroutine> fadeCoroutines = new();
 
 		private readonly List<AudioSource> musicSources = new();
 
 		private readonly List<AudioSource> soundSources = new();
+
+		private AudioClipSettings[] allClips;
 
 		private bool? musicEnabled;
     
@@ -45,8 +47,34 @@ namespace Audio
 			}
 		}
 
-		public void PlayAudio(AudioClipSettings settings)
+		protected override void OnAwake()
 		{
+			base.OnAwake();
+			allClips = AudioSettings.Instance.allClips;
+		}
+
+		private void Start()
+		{
+			foreach (var clip in allClips)
+			{
+				if (clip.PlayOnStart)
+				{
+					PlayAudio(clip.name);
+				}
+			}
+		}
+
+		public void PlayAudio(string settingsName)
+		{
+			var settings = allClips.First(x => x.name == settingsName);
+			if (settings.ChannelMode == ChannelMode.StartStop)
+			{
+				foreach (var otherClip in allClips.Where(x => x.Channel == settings.Channel))
+				{
+					StopAudio(otherClip.name);
+				}
+			}
+
 			var sourceList = DetermineSourceList(settings.AudioType);
 			AudioSource source = null;
 			switch (settings.LimitBehaviour)
@@ -70,39 +98,47 @@ namespace Audio
 			if (source == null) source = InstantiateAudioSource(settings.AudioType);
 
 			SetupAndPlayClip(settings, source);
+
+			if (settings.PlayNext != null)
+			{
+				StartCoroutine(PlayNextLater(settings));
+			}
 		}
 
-		public void StopAudio(AudioClipSettings settings)
+		public void StopAudio(string settingsName)
 		{
+			var settings = allClips.First(x => x.name == settingsName);
 			var sourceList = DetermineSourceList(settings.AudioType);
 			var source = FindSourceByClip(sourceList, settings);
 			if (source != null) source.Stop();
 		}
 
+		private IEnumerator PlayNextLater(AudioClipSettings settings)
+		{
+			yield return new WaitForSeconds(settings.Clip.length);
+
+			StopAudio(settings.name);
+			PlayAudio(settings.PlayNext.name);
+		}
+
 		private List<AudioSource> DetermineSourceList(AudioType audioType)
 		{
-			switch (audioType)
+			return audioType switch
 			{
-				case AudioType.Music:
-					return musicSources;
-				case AudioType.Sound:
-					return soundSources;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+				AudioType.Music or AudioType.MusicIntro => musicSources,
+				AudioType.Sound => soundSources,
+				_ => throw new ArgumentOutOfRangeException()
+			};
 		}
 
 		private bool DetermineSourceMuteValue(AudioType audioType)
 		{
-			switch (audioType)
+			return audioType switch
 			{
-				case AudioType.Music:
-					return !MusicEnabled;
-				case AudioType.Sound:
-					return !SoundEnabled;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+				AudioType.Music or AudioType.MusicIntro => !MusicEnabled,
+				AudioType.Sound => !SoundEnabled,
+				_ => throw new ArgumentOutOfRangeException()
+			};
 		}
 
 		private static AudioSource FindSourceByClip(List<AudioSource> sourceList, AudioClipSettings settings)
@@ -118,7 +154,14 @@ namespace Audio
 		private AudioSource InstantiateAudioSource(AudioType audioType)
 		{
 			var sourceList = DetermineSourceList(audioType);
-			var obj = new GameObject($"{nameof(AudioSource)}{sourceList.Count + 1}");
+			var typeName = audioType switch
+			{
+				AudioType.Music or AudioType.MusicIntro => "Music",
+				AudioType.Sound => "Sound",
+				_ => throw new ArgumentOutOfRangeException()
+			};
+
+			var obj = new GameObject($"{typeName}{sourceList.Count + 1}");
 			obj.transform.SetParent(transform);
 
 			var source = obj.AddComponent<AudioSource>();
@@ -131,19 +174,39 @@ namespace Audio
 		private static void SetupAndPlayClip(AudioClipSettings settings, AudioSource source)
 		{
 			source.loop = settings.AudioType == AudioType.Music;
-			source.clip = settings.Variants[Random.Range(0, settings.Variants.Length)];
-			source.volume = settings.DefaultVolume;
+			source.clip = settings.Variants[Random.Range(0, settings.Variants.Count)];
+			source.volume = settings.GetDefaultVolume(true);
 			source.Play();
 		}
 
-		public void FadeAudio(AudioClipSettings settings, float fadeTo, float fadeDuration)
+		public void FadeInAudio(string settingsName)
+		{
+			var settings = allClips.First(x => x.name == settingsName);
+			var clipsToFadeOut = allClips.Where(x =>
+					x.ChannelMode == ChannelMode.CrossFade && x.Channel == settings.Channel && x.name != settings.name);
+
+			foreach (var clip in clipsToFadeOut)
+			{
+				FadeAudioTo(clip, 0);
+			}
+
+			FadeAudioTo(settings, settings.GetDefaultVolume(false));
+		}
+
+		public void FadeOutAudio(string settingsName)
+		{
+			var settings = allClips.First(x => x.name == settingsName);
+			FadeAudioTo(settings, 0);
+		}
+
+		private void FadeAudioTo(AudioClipSettings settings, float fadeTo)
 		{
 			var sourceList = DetermineSourceList(settings.AudioType);
 			var source = FindSourceByClip(sourceList, settings);
 			if (source == null) return;
 
 			if (fadeCoroutines.TryGetValue(settings, out var coroutine)) StopCoroutine(coroutine);
-			coroutine = StartCoroutine(FadeAudioFlow(source, source.volume, fadeTo, fadeDuration));
+			coroutine = StartCoroutine(FadeAudioFlow(source, source.volume, fadeTo, settings.FadeDurationSeconds));
 			fadeCoroutines[settings] = coroutine;
 		}
 

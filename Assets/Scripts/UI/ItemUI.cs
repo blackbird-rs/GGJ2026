@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -60,7 +61,7 @@ public class ItemUI : MonoBehaviour,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        JudgyAudioManager.Instance.Take();
+        AudioManager.Instance.PlayTake();
 
         if (canvas == null)
             canvas = GetComponentInParent<Canvas>();
@@ -102,7 +103,7 @@ public class ItemUI : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        JudgyAudioManager.Instance.PutOn();
+        AudioManager.Instance.PlayPutOn();
 
         canvasGroup.blocksRaycasts = true;
 

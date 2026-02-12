@@ -15,6 +15,7 @@ MonoBehaviour:
   levelIndex: 2
   levelHint: You're not here for anything but you'll leave with something
   levelPrefab: {fileID: 7184479099893075796, guid: 0523c4a0c9a1f4d548b5396dc4fd61b3, type: 3}
+  audioClipSettings: {fileID: 11400000, guid: 509fcaa18db184fd1a707b2ee33cb742, type: 2}
   itemScores:
   - item: {fileID: 11400000, guid: 5b7f3c8ef6e08f747b7c118b5c6e542d, type: 2}
     conformity: -1

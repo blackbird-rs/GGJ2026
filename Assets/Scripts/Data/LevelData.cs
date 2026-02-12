@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Audio;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Level Data")]
@@ -9,6 +10,7 @@ public class LevelData : ScriptableObject
     public int levelIndex;
     public string levelHint;
     public GameObject levelPrefab;
+    public AudioClipSettings audioClipSettings;
     public List<ItemScoreEntry> itemScores = new();
 
     public float GetConformityForItem(ItemData item) =>

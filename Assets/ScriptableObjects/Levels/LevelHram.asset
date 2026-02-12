@@ -15,6 +15,7 @@ MonoBehaviour:
   levelIndex: 0
   levelHint: A place of worship
   levelPrefab: {fileID: 7184479099893075796, guid: 41f59efb0778e43dabcbe50662e7cd6b, type: 3}
+  audioClipSettings: {fileID: 11400000, guid: 9e897d2f9a52f4cada1db534a71ac787, type: 2}
   itemScores:
   - item: {fileID: 11400000, guid: dd6f98b8267380447816b4abc0f0a1e1, type: 2}
     conformity: 1

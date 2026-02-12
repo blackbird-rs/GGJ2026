@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Audio;
 using UnityEngine;
 
 public class LocationLevelManager : MonoBehaviour
@@ -32,7 +33,7 @@ public class LocationLevelManager : MonoBehaviour
         locationHolder.ClearChildren();
         Instantiate(currentLevelData.levelPrefab, locationHolder);
         judgesUI.gameObject.SetActive(false);
-        JudgyAudioManager.Instance.FadeToState(levelIndex);
+        AudioManager.Instance.FadeInAudio(currentLevelData.audioClipSettings.name);
 
         StartCoroutine(LocationFlow(currentLevelData, equippedItems));
     }
@@ -53,7 +54,7 @@ public class LocationLevelManager : MonoBehaviour
         saveData.itemPlacements.Clear();
         saveData.itemSpawns.Clear();
         SaveSystem.SaveGame(saveData);
-        JudgyAudioManager.Instance.FadeToDefaultState();
+        AudioManager.Instance.FadeInMain();
 
         if (saveData.currentLevelIndex < levelDataCollection.levels.Length)
         {

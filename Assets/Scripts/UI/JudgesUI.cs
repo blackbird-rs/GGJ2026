@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Audio;
 using TMPro;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ public class JudgesUI: MonoBehaviour
 
     private IEnumerator JudgesFlow(List<int> scores, float averageScore)
     {
-        JudgyAudioManager.Instance.Applause();
+        AudioManager.Instance.PlayApplause();
 
         yield return new WaitForSeconds(0.5f);
 

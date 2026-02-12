@@ -15,6 +15,7 @@ MonoBehaviour:
   levelIndex: 1
   levelHint: Shoes are optional and nobody is in a hurry
   levelPrefab: {fileID: 7184479099893075796, guid: 270b5119504e64f34807a18cf1c09e24, type: 3}
+  audioClipSettings: {fileID: 11400000, guid: 1323573653275431ca5f53296ec8360d, type: 2}
   itemScores:
   - item: {fileID: 11400000, guid: dd6f98b8267380447816b4abc0f0a1e1, type: 2}
     conformity: 0.5

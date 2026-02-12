@@ -15,6 +15,7 @@ MonoBehaviour:
   levelIndex: 5
   levelHint: Water is close and so is the noise
   levelPrefab: {fileID: 7184479099893075796, guid: d12609b6e922e46209ca1b973246a94c, type: 3}
+  audioClipSettings: {fileID: 11400000, guid: 38c421a6cd6da4b8d902f524e9168766, type: 2}
   itemScores:
   - item: {fileID: 11400000, guid: dd6f98b8267380447816b4abc0f0a1e1, type: 2}
     conformity: -1
