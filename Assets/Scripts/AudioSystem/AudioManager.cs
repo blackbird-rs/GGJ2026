@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace Audio
 {
-	public partial class AudioManager : MonoSingleton<AudioManager>
+	public partial class AudioManager : Util.MonoSingleton<AudioManager>
 	{
 		private readonly Dictionary<AudioClipSettings, Coroutine> fadeCoroutines = new();
 

@@ -7,7 +7,7 @@ namespace Audio
     [CreateAssetMenu]
     public class AudioClipSettings : ScriptableObject
     {
-        [field: SerializeField] public AudioClip Clip { get; private set; }
+        [field: SerializeField] public AudioClip Clip { get; set; }
         [field: SerializeField] public bool UseVariants { get; private set; }
         [field: SerializeField] public AudioClip[] OtherVariants { get; private set; }
         [field: SerializeField] public AudioType AudioType { get; private set; }

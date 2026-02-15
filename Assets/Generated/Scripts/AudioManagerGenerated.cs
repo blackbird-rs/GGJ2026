@@ -6,6 +6,14 @@ namespace Audio
         public void StopAda() => StopAudio("Ada");
         public void FadeInAda() => FadeInAudio("Ada");
         public void FadeOutAda() => FadeOutAudio("Ada");
+        public void PlayApplause() => PlayAudio("Applause");
+        public void StopApplause() => StopAudio("Applause");
+        public void FadeInApplause() => FadeInAudio("Applause");
+        public void FadeOutApplause() => FadeOutAudio("Applause");
+        public void PlayClick() => PlayAudio("Click");
+        public void StopClick() => StopAudio("Click");
+        public void FadeInClick() => FadeInAudio("Click");
+        public void FadeOutClick() => FadeOutAudio("Click");
         public void PlayHram() => PlayAudio("Hram");
         public void StopHram() => StopAudio("Hram");
         public void FadeInHram() => FadeInAudio("Hram");
@@ -18,26 +26,10 @@ namespace Audio
         public void StopProstes() => StopAudio("Prostes");
         public void FadeInProstes() => FadeInAudio("Prostes");
         public void FadeOutProstes() => FadeOutAudio("Prostes");
-        public void PlayApplause() => PlayAudio("Applause");
-        public void StopApplause() => StopAudio("Applause");
-        public void FadeInApplause() => FadeInAudio("Applause");
-        public void FadeOutApplause() => FadeOutAudio("Applause");
-        public void PlayClick() => PlayAudio("Click");
-        public void StopClick() => StopAudio("Click");
-        public void FadeInClick() => FadeInAudio("Click");
-        public void FadeOutClick() => FadeOutAudio("Click");
         public void PlayPutOn() => PlayAudio("PutOn");
         public void StopPutOn() => StopAudio("PutOn");
         public void FadeInPutOn() => FadeInAudio("PutOn");
         public void FadeOutPutOn() => FadeOutAudio("PutOn");
-        public void PlaySteps() => PlayAudio("Steps");
-        public void StopSteps() => StopAudio("Steps");
-        public void FadeInSteps() => FadeInAudio("Steps");
-        public void FadeOutSteps() => FadeOutAudio("Steps");
-        public void PlayTake() => PlayAudio("Take");
-        public void StopTake() => StopAudio("Take");
-        public void FadeInTake() => FadeInAudio("Take");
-        public void FadeOutTake() => FadeOutAudio("Take");
         public void PlayShopping() => PlayAudio("Shopping");
         public void StopShopping() => StopAudio("Shopping");
         public void FadeInShopping() => FadeInAudio("Shopping");
@@ -50,5 +42,13 @@ namespace Audio
         public void StopSplav() => StopAudio("Splav");
         public void FadeInSplav() => FadeInAudio("Splav");
         public void FadeOutSplav() => FadeOutAudio("Splav");
+        public void PlaySteps() => PlayAudio("Steps");
+        public void StopSteps() => StopAudio("Steps");
+        public void FadeInSteps() => FadeInAudio("Steps");
+        public void FadeOutSteps() => FadeOutAudio("Steps");
+        public void PlayTake() => PlayAudio("Take");
+        public void StopTake() => StopAudio("Take");
+        public void FadeInTake() => FadeInAudio("Take");
+        public void FadeOutTake() => FadeOutAudio("Take");
     }
 }

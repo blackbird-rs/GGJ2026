@@ -10,7 +10,16 @@ namespace Audio
         {
             base.OnInspectorGUI();
 
-            if (GUILayout.Button("Generate Code"))
+            GUILayout.Space(20);
+
+            if (GUILayout.Button("Audio Settings Editor"))
+            {
+                AudioCodeGenerator.ShowWindow();
+            }
+
+            GUILayout.Space(5);
+
+            if (GUILayout.Button("Generate Audio Code"))
             {
                 AudioCodeGenerator.Generate();
             }

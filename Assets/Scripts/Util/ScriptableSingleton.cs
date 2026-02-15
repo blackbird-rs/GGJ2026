@@ -1,9 +1,4 @@
-#if UNITY_EDITOR
-using System.IO;
-using UnityEditor;
-#else
 using System;
-#endif
 using UnityEngine;
 
 public class ScriptableSingleton<T> : ScriptableObject where T : ScriptableObject
@@ -22,20 +17,7 @@ public class ScriptableSingleton<T> : ScriptableObject where T : ScriptableObjec
             T[] results = Resources.LoadAll<T>("");
             if (results.Length == 0)
             {
-#if UNITY_EDITOR
-                const string savePath = "Assets/Generated/Resources/";
-                if (!Directory.Exists(savePath))
-                {
-                    Directory.CreateDirectory(savePath);
-                }
-
-                instance = CreateInstance<T>();
-                var path = Path.Combine(savePath, $"{typeof(T).Name}.asset");
-                AssetDatabase.CreateAsset(instance, path);
-                return instance;
-#else
                 throw new Exception("ScriptableSingleton<" + typeof(T) + "> - No asset found in Resources folder.");
-#endif
             }
 
             if (results.Length > 1)
